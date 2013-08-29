@@ -2,11 +2,14 @@
 var g_features = [];	// all extensions are instantiated into this list
 
 var g_defaultFeatures = {
+	'TagUsers': 1,
+	'HideMoods': 1,
+	'AjaxButtons': 1,
+	'MailUpgrade': 1,
+	'DeleteButton': 1,
+};
+var g_defaultFeatureValues = {
 	'TagUsers': '773:memfer',
-	'HideMoods': 'yes',
-	'AjaxButtons': 'yes',
-	'MailUpgrade': 'yes',
-	'DeleteButton': 'yes',
 };
 
 function isfeatureAvailable(name)
@@ -51,7 +54,7 @@ function getFeatureValue(name)
 	var lsKey = '_kyberia_v31_feature_value_'+name;
 	var val = localStorage[lsKey];
 	if (typeof val == 'undefined')
-		val = g_defaultFeatures[name];
+		val = g_defaultFeatureValues[name];
 
 	return val;
 }

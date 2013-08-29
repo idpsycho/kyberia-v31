@@ -49,7 +49,11 @@ function ExtensionOptions()
 			}
 
 			if (!isfeatureAvailable(name))
-				feature.parent().addClass('disabled');
+			{
+				var label = feature.parent();
+				label.addClass('disabled');
+				label.parent().attr('title', 'not available yet');
+			}
 		}
 
 		$('#kyberia_v31 .ls').change(function()

@@ -8,10 +8,11 @@
 	#kyberia_v31 section>div	{ margin-left: 110px; margin-top: 10px; }
 	#kyberia_v31 input[type="checkbox"] { cursor: pointer; height: 12px; }
 	#kyberia_v31 input			{ margin-right: 10px; }
+	#kyberia_v31 input.wide		{ width: 90%; }
 	#kyberia_v31 h2				{ float: left; width: 100px; color: #555; }
-	#kyberia_v31 label			{ display: block; margin-bottom: 1px; }
-	#kyberia_v31 label.disabled	{ opacity: 0.3; pointer-events: none; }
-	#kyberia_v31 label p		{ margin-left: 30px; color: #555; margin-top: 0px; margin-bottom: 2px; }
+	#kyberia_v31 div			{ display: block; margin-bottom: 1px; }
+	#kyberia_v31 .disabled		{ opacity: 0.3; pointer-events: none; }
+	#kyberia_v31 div p			{ margin-left: 30px; color: #555; margin-top: 0px; margin-bottom: 2px; }
 	#kyberia_v31 .ls.nah		{ background: red; }
 	#kyberia_v31 .saved 		{ display: none; float: right; color: red; font-weight: bold; }
 
@@ -27,55 +28,78 @@
 	<section>
 		<h2>Users</h2>
 		<div>
-			<label><input type="checkbox" name="StopAvatars" class="ls"> stop avatar animation</label>
-			<label><input type="checkbox" name="HideAvatars" class="ls"> hide avatars</label>
-			<label><input type="checkbox" name="Desocializer" class="ls"> desocializer - hide avatars &amp; names</label>
-			<br>
-			<label><input type="text" name="TagUsers" class="ls"> tag users
-				<p>773:memfer -&gt; changed_name<sup>memfer</sup></p>
-			</label>
+			<div>
+				<label><input type="checkbox" name="StopAvatars" class="ls"> stop avatar animation</label>
+			</div>
+			<div>
+				<label><input type="checkbox" name="HideAvatars" class="ls"> hide avatars</label>
+			</div>
+			<div>
+				<label><input type="checkbox" name="Desocializer" class="ls"> desocializer - hide avatars &amp; names</label>
+			</div>
+			<div>
+				<label><input type="checkbox" name="TagUsers" class="ls"> tag users</label>
+				<p>
+					<input type="text" name="TagUsers" class="ls wide"><br>
+					773:memfer -&gt; changed_name<sup>memfer</sup>
+				</p>
+			</div>
+
 		</div>
 	</section>
 
 	<section>
 		<h2>Nodes</h2>
 		<div>
-			<label><input type="checkbox" name="FlatThreads" class="ls"> make deep threads flat
-				<p>if two people talk, nodes don't go deeper</p>
-				</label>
-			<label><input type="checkbox" name="LimitNodeHeight" class="ls"> limit node height
+			<div>
+				<label><input type="checkbox" name="HideMoods" class="ls"> hide mood messages</label>
+			</div>
+			<div>
+				<label><input type="checkbox" name="LimitNodeHeight" class="ls"> limit node height</label>
 				<p>click to 'show more'</p>
-				</label>
-			<label><input type="checkbox" name="HideMoods" class="ls"> hide mood messages</label>
+			</div>
+			<div>
+				<label><input type="checkbox" name="FlatThreads" class="ls"> make deep threads flat</label>
+				<p>if two people talk, nodes don't go deeper</p>
+			</div>
 		</div>
 	</section>
 
 	<section>
 		<h2>UI fix</h2>
 		<div>
-			<label><input type="checkbox" name="AjaxButtons" class="ls"> K, FOOK, BOOK without refresh
+			<div>
+				<label><input type="checkbox" name="AjaxButtons" class="ls"> K, FOOK, BOOK without refresh</label>
 				<p>+ FOOKs in background, and hides the node</p>
 				<p>+ BOOKs in background</p>
 				<p>+ K! in background</p>
-				</label>
-			<label><input type="checkbox" name="DeleteButton" class="ls"> DELETE to recycle node to 123456</label>
-			<label><input type="checkbox" name="KeyShortcuts" class="ls"> keyboard shortcuts
+			</div>
+			<div>
+				<label><input type="checkbox" name="DeleteButton" class="ls"> DELETE to recycle node to 123456</label>
+			</div>
+			<div>
+				<label><input type="checkbox" name="KeyShortcuts" class="ls"> keyboard shortcuts</label>
 				<p>B/N - previous/next submission</p>
-				</label>
+			</div>
 		</div>
 	</section>
 
 	<section>
 		<h2>Misc</h2>
 		<div>
-			<label><input type="checkbox" name="MailUpgrade" class="ls"> mail upgrade
+			<div>
+				<label><input type="checkbox" name="MailUpgrade" class="ls"> mail upgrade</label>
+					(<a href="http://kyberia.sk/id/6505157">about</a>)
 				<p>+ show last mailed users, click to filter</p>
 				<p>+ online status</p>
-				</label>
-			<label><input type="checkbox" name="DoplnacDiakritiky" class="ls"> dopĺňač diakritiky
-				(<a href="http://kyberia.sk/id/7134215">kyberia</a>)</label>
-			<label><input type="checkbox" name="Facebookizer" class="ls">
-				 <a href="http://kyberia.sk/id/6771353">facebookizer</a></label>
+			</div>
+			<div>
+				<label><input type="checkbox" name="DoplnacDiakritiky" class="ls"> dopĺňač diakritiky</label>
+					(<a href="http://kyberia.sk/id/7134215">about</a>)
+			</div>
+			<!-- <div><input type="checkbox" name="Facebookizer" class="ls">
+				 <a href="http://kyberia.sk/id/6771353">facebookizer</a></div>
+			-->
 		</div>
 	</section>
 
@@ -84,7 +108,6 @@
 
 		<div style="text-align: center; margin-left: 0;">
 			<a href="http://kyberia.sk/id/6775158">hatetris</a>
-			| <a href="http://diakritika.brm.sk">diakritika.brm.sk</a>
 			| <a href="https://twitter.com/psycho_brm">@psycho_brm</a>
 		</div>
 	</section>
