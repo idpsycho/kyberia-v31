@@ -9,6 +9,12 @@ kyberia.sk features that make it more fun. extension for chrome.
 - B) or wait for official chrome webstore extension
 
 
+## how to use
+open configure your user node, i.e. "setup"
+
+<img src="https://raw.github.com/idpsycho/kyberia-v31/master/kyberia-v31.png">
+
+
 ## todo
 #### important
 - include analytics, send list of enabled features once a day
