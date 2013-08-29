@@ -1,0 +1,32 @@
+{
+	"content_scripts": [ {
+		"js": [
+			"jquery.js",
+			"kyberia-utils.js",
+			"kyberia-v31.js",
+			"features/ExtensionOptions.js",
+			"features/HideAvatars.js",
+			"features/HideMoods.js",
+			"features/LimitNodeHeight.js",
+			"features/Desocializer.js",
+			"features/StopAvatars.js",
+			"features/AjaxButtons.js",
+			"features/DeleteButton.js",
+			"features/TagUsers.js",
+			"features/MailUpgrade.js",
+			"features/Facebookizer.js"
+		],
+		"matches": [ "http://kyberia.sk/*", "https://kyberia.sk/*" ],
+		"run_at": "document_start"
+	} ],
+	"name": "Kyberia v3.1 features",
+	"description": "Adds features that make kyberia.sk more fun.",
+	"manifest_version": 2,
+	"permissions": [ "\u003Call_urls\u003E", "tabs", "http://*/*", "https://*/*", "storage" ],
+	"version": "1.0",
+	"icons": {
+		"128": "icon.png"
+   },
+	"web_accessible_resources": ["icon.png", "options.html", "jquery-1.10.2.min.map"]
+
+}
