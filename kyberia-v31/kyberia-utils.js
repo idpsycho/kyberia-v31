@@ -7,6 +7,7 @@ var g_defaultFeatures = {
 	'AjaxButtons': 1,
 	'MailUpgrade': 1,
 	'DeleteButton': 1,
+	'LimitNodeHeight': 1,
 };
 var g_defaultFeatureValues = {
 	'TagUsers': '773:memfer',
