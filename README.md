@@ -5,8 +5,7 @@ kyberia.sk features that make it more fun. extension for chrome.
 
 
 ## how to install
-- A) drag&drop [kyberia-v31.crx](kyberia-v31.crx) to chrome://extensions
-- B) or wait for official chrome webstore extension
+from <a href="https://chrome.google.com/webstore/detail/kyberia-v31-features/icjomacohfdgbijhlhkhfomoeolncgia">chrome webstore</a>
 
 
 ## how to use

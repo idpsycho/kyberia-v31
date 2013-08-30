@@ -5,7 +5,7 @@ function TagUsers()
 	this.onLoad = function() {
 		var filter = getFeatureValue(this.name);
 		if (!filter) return;
-		var names = filter.split(', ');
+		var names = filter.split(' ');
 		for (var i in names)
 		{
 			var name = $.trim(names[i]);
