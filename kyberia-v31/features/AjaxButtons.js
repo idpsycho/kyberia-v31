@@ -34,23 +34,24 @@ function AjaxButtons()
 		//btns.mouseenter(function() { $(this).stop().animate({opacity:0.5}, 100); })
 		//btns.mouseleave(function() { $(this).stop().animate({opacity:1}, 100); })
 
-		fooks().on('click', function() {
-			var btn = $(this);
-			$.post(actionOf(btn), {'event':'fook'}, function() {
-				btn.fadeOut();
-				var fooked = btn.parents('table.bordered').eq(0);
-				var div = $('<div>');
-				fooked.after(div).appendTo(div);
-				div.slideUp(500);
-			});
-			return false;
-		});
-
 		Ks().on('click', function() {
 			var btn = $(this);
 			$.post(actionOf(btn), {'event':'K'}, function() {
 				btn.attr('disabled', 'disabled').hide();
 				btn.css({color: 'red', 'font-weight':'bold', border:'none'}).fadeIn();
+			});
+			return false;
+		});
+
+		fooks().add(unfooks()).on('click', function() {
+			var btn = $(this);
+			var val = btn.val();
+			var newVal = val=='fook'?'unfook':'fook';
+			$.post(actionOf(btn), {'event':val}, function() {
+				btn.val( newVal );
+				var fooked = btn.parents('table.bordered').eq(0);
+				if (fooked && val=='fook')
+					$('<div>').insertAfter(fooked).append(fooked).slideUp(500);
 			});
 			return false;
 		});
@@ -94,6 +95,7 @@ function AjaxButtons()
 	}
 
 	function fooks() { return $('input[type=submit][value=fook]'); }
+	function unfooks() { return $('input[type=submit][value=unfook]'); }
 	function books() { return $('input[type=submit][value=book]'); }
 	function unbooks() { return $('input[type=submit][value=unbook]'); }
 	function Ks() { return $('input[type=submit][value=K]'); }

@@ -48,9 +48,8 @@ function CompactMode()
 			.compact-mode.node_avatar	{ width: 18px; max-height: 18px; }\
 			.compact-mode.lvl			{ padding-top: 0; border-left: none; }\
 			.compact-mode.level1		{ border-bottom: none; margin-top: 20px; }\
-			.compact-mode.hidden_header	{ position: absolute; z-index: 9; background: #333; padding: 3px 0;\
-											border: 1px solid #6dae42; border-bottom: none; \
-											left: -1px; bottom: 0px; width: 100%; overflow: hidden; }\
+			.compact-mode.hidden_header	{ background: #333; padding: 3px 0; overflow: hidden;\
+											position: relative; z-index: 2; }\
 		";
 		$('<style>').text(style).appendTo('body');
 		$('.node_header, .node_body, .node_content').addClass('compact-mode');
@@ -68,8 +67,7 @@ function CompactMode()
 
 			$('<div>').addClass('compact-mode header_bg').prependTo(content);	// just bg color
 
-			var hiddenWrap = $('<div>').prependTo(content).css({position: 'relative'});
-			var hidden = $('<div>').appendTo(hiddenWrap);
+			var hidden = $('<div>').prependTo(content);
 			hidden.hide().addClass('compact-mode hidden_header')
 
 			$('form.quickK, button.btn_QuickReply', header).appendTo(hidden);
