@@ -72,6 +72,7 @@ function CompactMode()
 			var hidden = $('<div>').appendTo(hiddenWrap);
 			hidden.hide().addClass('compact-mode hidden_header')
 
+			$('form.quickK, button.btn_QuickReply', header).appendTo(hidden);
 			$('input[type=checkbox], .node_header_created, .node_header_modified', header).appendTo(hidden);
 			$('.node_header_level, .node_header_title, .childVector', header).appendTo(hidden);
 

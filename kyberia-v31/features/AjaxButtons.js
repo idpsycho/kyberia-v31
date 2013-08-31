@@ -4,10 +4,35 @@ function AjaxButtons()
 	this.name = 'AjaxButtons';
 	this.onLoad = function()
 	{
-		var btns = fooks().add(Ks()).add(books()).add(unbooks());
-		btns.css('cursor', 'pointer');
-		btns.mouseenter(function() { $(this).stop().animate({opacity:0.5}, 100); })
-		btns.mouseleave(function() { $(this).stop().animate({opacity:1}, 100); })
+		var style = "button:hover, input[type=submit]:hover { cursor: pointer; opacity: 0.5; }";
+		$('<style>').text(style).appendTo('body');
+
+		addKtoEveryNode();
+
+		ajaxifyButtons();
+	}
+	////////////////////////////////////////////////////////////
+
+	function addKtoEveryNode()
+	{
+		$('.node_content').each(function() {
+			var header = $(this).find('.node_header');
+			var link = header.find('.node_header_title_nodename').attr('href');
+
+			var form = $('<form class="quickK" method="POST">').attr('action', link);
+			form.append('<input type="submit" name="event" value="K">');
+			form.css({float: 'right'});
+
+			header.prepend(form);
+		});
+	}
+
+	function ajaxifyButtons()
+	{
+		//var btns = fooks().add(Ks()).add(books()).add(unbooks());
+		//btns.css('cursor', 'pointer');
+		//btns.mouseenter(function() { $(this).stop().animate({opacity:0.5}, 100); })
+		//btns.mouseleave(function() { $(this).stop().animate({opacity:1}, 100); })
 
 		fooks().on('click', function() {
 			var btn = $(this);
@@ -55,7 +80,7 @@ function AjaxButtons()
 			return false;
 		});
 	}
-	////////////////////////////////////////////////////////////
+
 
 	function actionOf(btn) { return btn.parents('form').eq(0).attr('action'); }
 	function scrollToHref(href, off)

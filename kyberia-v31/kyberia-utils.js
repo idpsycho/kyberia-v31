@@ -9,7 +9,9 @@ var g_defaultFeatures = {
 	'DeleteButton': 1,
 	'LimitNodeHeight': 1,
 	'InplaceEditing': 1,
+	'QuickReply': 1,
 };
+
 var g_defaultFeatureValues = {
 	'TagUsers': '773:memfer',
 };
