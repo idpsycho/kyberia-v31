@@ -24,6 +24,7 @@ function LimitNodeHeight()
 		if (h < 1000) return;
 
 		if (t.data('islong')) return;
+		if (t.find('textarea').length) return;
 		t.data('islong', 1);
 
 		if (t.is('td'))
@@ -33,9 +34,9 @@ function LimitNodeHeight()
 			t = div;
 
 		}
-		t.height(500);
+		t.height(600);
 		t.css('position', 'relative');
-		var nMore = (h/500).toFixed(0)*1;
+		var nMore = (h/600).toFixed(0)*1;
 		var expand = $('<div>').html('show '+(nMore>1?nMore+'x':'')+' more');
 
 		t.append(expand);

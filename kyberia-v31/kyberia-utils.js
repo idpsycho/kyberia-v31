@@ -8,6 +8,7 @@ var g_defaultFeatures = {
 	'MailUpgrade': 1,
 	'DeleteButton': 1,
 	'LimitNodeHeight': 1,
+	'InplaceEditing': 1,
 };
 var g_defaultFeatureValues = {
 	'TagUsers': '773:memfer',

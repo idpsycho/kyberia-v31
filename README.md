@@ -16,13 +16,11 @@ open configure your user node, i.e. "setup"
 
 ## todo
 #### important
-- include analytics, send list of enabled features once a day
 - dopĺňač diakritiky
 - mail enhance, filter_by ajax load when clicking on icon
 
 #### i guess..
 - desocializer, except friends
-- compact nodes - makes one-line submissions look like chat
 - code sumbissions (allow tab, convert space to nbsp)
 - quick reply
 - favorite button? puts node into predefined 'my favorites' node

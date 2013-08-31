@@ -1,6 +1,6 @@
 {
 	"name": "Kyberia v3.1 features",
-	"version": "1.7",
+	"version": "1.8",
 	"description": "Adds features that make kyberia.sk more fun.",
 
 	"permissions": [ "storage" ],
@@ -29,7 +29,7 @@
 			"features/DeleteButton.js",
 			"features/TagUsers.js",
 			"features/MailUpgrade.js",
-			"features/Facebookizer.js"
+			"features/InplaceEditing.js"
 		],
 		"matches": [ "http://kyberia.sk/*", "https://kyberia.sk/*" ],
 		"run_at": "document_start"
