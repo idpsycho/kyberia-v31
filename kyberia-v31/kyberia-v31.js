@@ -15,6 +15,9 @@ function onReady()
 
 	if (analyticsOnceADay())
 		chrome.runtime.sendMessage( {arrEnabledFeatures: arrEnabledFeatures} );
+
+	// not necessary, but very useful for debugging..
+	$('<script src="http://code.jquery.com/jquery-1.10.1.min.js">').appendTo('body');
 }
 
 function analyticsOnceADay()

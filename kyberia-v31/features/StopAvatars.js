@@ -7,7 +7,7 @@ function StopAvatars()
 	}
 	////////////////////////////////////////////////////////////
 
-	function avatars() { return $('.node_avatar'); }
+	function avatars() { return $('.node_avatar').add('img[src^="/images/nodes/"]'); }
 
 	$.fn.freezeGif = function()
 	{

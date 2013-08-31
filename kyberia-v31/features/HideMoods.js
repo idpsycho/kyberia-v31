@@ -3,7 +3,7 @@ function HideMoods()
 {
 	this.name = 'HideMoods';
 	this.onLoad = function() {
-		moods().hide();
+		moods().hide().prev().filter('br').hide();
 	}
 	////////////////////////////////////////////////////////////
 

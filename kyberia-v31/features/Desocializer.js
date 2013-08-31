@@ -8,8 +8,12 @@ function Desocializer()
 	}
 	/////////////////////////////////////////////////////////
 
-	function avatars() { return $('.node_avatar'); }
-	function usernames() { return $('.node_login'); }
+	function avatars() { return $('.node_avatar').add('img[src^="/images/nodes/"]'); }
+	function usernames() {
+		var a = $('a.node_login').add('tr#sidebar_owner a');
+		var inK = $('a:eq(2)', 'table.bordered td.header');
+		return a.add(inK);
+	}
 
 }
 
