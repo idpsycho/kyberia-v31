@@ -21,17 +21,29 @@ function ExtensionOptions()
 		return m[1];
 	}
 	function inConfigureUserinfo() {
-		var re = new RegExp(userId()+'\/1961033$')	// http://kyberia.sk/id/1297258
+		var id = RegExp.escape( userId() );
+		var re = new RegExp('\/id\/'+id+'\/1961033$')	// http://kyberia.sk/id/1297258
 		return window.location.href.match(re);
 	}
 
+	function getOptionsHtml(fn)
+	{
+		if (window.chrome && !window.isHackyUserScript)
+		{
+			var url = window.chrome.extension.getURL("options.html");
+			$.get(url, fn, 'html');
+		}
+		else
+		{
+			fn( OPTIONS_HTML() );
+		}
+	}
 	function addExtensionOptions()
 	{
-		var url = chrome.extension.getURL("options.html");
-		$.get(url, function(resp){
-			$(resp).insertBefore('#configure');
+		getOptionsHtml(function(html) {
+			$(html).insertBefore('#configure');
 			applyOptionsJavascript();
-		}, 'html');
+		});
 	}
 	function applyOptionsJavascript()
 	{

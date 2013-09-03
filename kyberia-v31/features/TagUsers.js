@@ -6,7 +6,7 @@ function TagUsers()
 		var filter = getFeatureValue(this.name);
 		if (!filter) return;
 		var names = filter.split(' ');
-		for (var i in names)
+		for (var i=0; i < names.length; i++)
 		{
 			var name = $.trim(names[i]);
 			if (!name) continue;
@@ -18,7 +18,7 @@ function TagUsers()
 				var href = $(this).attr('href');
 				if (!href) return;
 
-				var re = new RegExp('\/id\/'+id+'$');
+				var re = new RegExp('\/id\/'+RegExp.escape(id)+'$');
 				if (href.match(re))
 					$(this).append( $('<sup>').text(user) );
 			});

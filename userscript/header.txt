@@ -1,0 +1,8 @@
+// ==UserScript==
+// @name Kyberia-v31
+// @match http://kyberia.sk/*
+// @match https://kyberia.sk/*
+// @include        http://kyberia.sk*
+// @include        https://kyberia.sk*
+// @run-at document-end
+// ==/UserScript==

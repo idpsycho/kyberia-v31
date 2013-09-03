@@ -76,8 +76,8 @@ function CompactMode()
 
 			//content.mouseenter(function() { hidden.stop(true, true).slideDown(); });
 			//content.mouseleave(function() { hidden.stop().slideUp(); });
-			content.mouseenter(function() { hidden.show() });
-			content.mouseleave(function() { hidden.hide() });
+			header.mouseenter(function() { hidden.slideDown() });
+			//content.mouseleave(function() { hidden.hide() });
 		});
 	}
 

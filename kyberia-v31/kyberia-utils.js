@@ -16,9 +16,13 @@ var g_defaultFeatureValues = {
 	'TagUsers': '773:memfer',
 };
 
+RegExp.escape= function(s) {
+    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
+};
+
 function isfeatureAvailable(name)
 {
-	for (var i in g_features)
+	for (var i=0; i < g_features.length; i++)
 		if (g_features[i].name == name)
 			return true;
 	return false;
