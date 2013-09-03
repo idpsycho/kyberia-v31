@@ -9,10 +9,12 @@ function ExtensionOptions()
 	////////////////////////////////////////////////////////////
 
 	function userId() {	// TODO: could be cached, and could be in some utils.js or kyberia-api.js
-		var headerform = $('input[type="submit"][value="logout"]').parents('form:eq(0)');
-		var href = headerform.attr('action');
-		if (!href)
-			href = $('a:contains("userinfo")').attr('href');
+		var confs = $('a[href$="1961033"]');
+		var setup = confs.filter(":contains('nastavenie'),:contains('setup')");
+		if (!setup.length)
+			setup = confs.eq(0);
+
+		var href = setup.eq(0).attr('href');
 		if (!href)
 			return;
 

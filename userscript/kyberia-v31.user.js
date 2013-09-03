@@ -8,13 +8,13 @@
 // ==/UserScript==
 
 
-// Auto-combined file, created at 2013-09-03 21:17:42
+// Auto-combined file, created at 2013-09-03 21:56:10
 // From files:
 // 	options_html.js (2013-09-03 20:59:15)
 // 	../kyberia-v31/jquery.js (2013-08-24 17:17:25)
 // 	../kyberia-v31/kyberia-utils.js (2013-09-03 21:16:17)
 // 	../kyberia-v31/kyberia-v31.js (2013-09-03 20:44:28)
-// 	../kyberia-v31/features/ExtensionOptions.js (2013-09-03 21:17:07)
+// 	../kyberia-v31/features/ExtensionOptions.js (2013-09-03 21:55:45)
 // 	../kyberia-v31/features/HideAvatars.js (2013-08-27 22:52:25)
 // 	../kyberia-v31/features/HideMoods.js (2013-08-30 22:43:31)
 // 	../kyberia-v31/features/QuickReply.js (2013-08-31 17:18:30)
@@ -290,7 +290,7 @@ $(function() {
 });
 
 
-// File: ../kyberia-v31/features/ExtensionOptions.js (2013-09-03 21:17:07)
+// File: ../kyberia-v31/features/ExtensionOptions.js (2013-09-03 21:55:45)
 
 
 function ExtensionOptions()
@@ -303,10 +303,12 @@ function ExtensionOptions()
 	////////////////////////////////////////////////////////////
 
 	function userId() {	// TODO: could be cached, and could be in some utils.js or kyberia-api.js
-		var headerform = $('input[type="submit"][value="logout"]').parents('form:eq(0)');
-		var href = headerform.attr('action');
-		if (!href)
-			href = $('a:contains("userinfo")').attr('href');
+		var confs = $('a[href$="1961033"]');
+		var setup = confs.filter(":contains('nastavenie'),:contains('setup')");
+		if (!setup.length)
+			setup = confs.eq(0);
+
+		var href = setup.eq(0).attr('href');
 		if (!href)
 			return;
 
