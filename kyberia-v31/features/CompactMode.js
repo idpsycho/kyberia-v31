@@ -74,8 +74,10 @@ function CompactMode()
 			$('input[type=checkbox], .node_header_created, .node_header_modified', header).appendTo(hidden);
 			$('.node_header_level, .node_header_title, .childVector', header).appendTo(hidden);
 
-			content.mouseenter(function() { hidden.stop(true, true).slideDown(); });
-			content.mouseleave(function() { hidden.stop().slideUp(); });
+			//content.mouseenter(function() { hidden.stop(true, true).slideDown(); });
+			//content.mouseleave(function() { hidden.stop().slideUp(); });
+			content.mouseenter(function() { hidden.show() });
+			content.mouseleave(function() { hidden.hide() });
 		});
 	}
 

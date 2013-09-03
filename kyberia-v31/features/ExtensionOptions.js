@@ -9,8 +9,13 @@ function ExtensionOptions()
 	////////////////////////////////////////////////////////////
 
 	function userId() {	// TODO: could be cached, and could be in some utils.js or kyberia-api.js
-		var href = $('a:contains("userinfo")').attr('href');
-		if (!href) return;
+		var headerform = $('input[type="submit"][value="logout"]').parents('form:eq(0)');
+		var href = headerform.attr('action');
+		if (!href)
+			href = $('a:contains("userinfo")').attr('href');
+		if (!href)
+			return;
+
 		var m = href.match(/\/id\/([0-9]+)/);
 		if (!m || m.length != 2) return;
 		return m[1];
