@@ -24,6 +24,7 @@
 			"features/QuickReply.js",
 			"features/AjaxButtons.js",
 			"features/LimitNodeHeight.js",
+			"features/LimitNodeWidth.js",
 			"features/Desocializer.js",
 			"features/StopAvatars.js",
 			"features/DeleteButton.js",
