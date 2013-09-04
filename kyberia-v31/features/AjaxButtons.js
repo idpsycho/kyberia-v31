@@ -26,7 +26,7 @@ function AjaxButtons()
 			var node_link = header.find('a:eq(0)').attr('href');
 
 			$(this).after( makeButton(node_link, 'fook') );
-			$(this).after( makeButton(node_link, 'book') );
+			//$(this).after( makeButton(node_link, 'book') );
 			$(this).after( makeButton(node_link, 'K') );
 		});
 	}
