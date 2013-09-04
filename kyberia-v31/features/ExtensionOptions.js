@@ -5,9 +5,9 @@ function ExtensionOptions()
 	this.onLoad = function() {
 		if (inConfigureUserinfo())
 			addExtensionOptions();
+
 	}
 	////////////////////////////////////////////////////////////
-
 	function userId() {	// TODO: could be cached, and could be in some utils.js or kyberia-api.js
 		var confs = $('a[href$="1961033"]');
 		var setup = confs.filter(":contains('nastavenie'),:contains('setup')");

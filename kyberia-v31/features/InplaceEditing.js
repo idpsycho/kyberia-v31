@@ -44,7 +44,7 @@ function InplaceEditing()
 	{
 		var ta = $('<textarea>');
 		var w = body.width();
-		var h = body.height() * 1.1 + 20;
+		var h = body.height() * 1.1 + 40;
 		ta.add(body).width(w).height(h);
 
 		ta.css('font-family', body.css('font-family'));
@@ -52,7 +52,8 @@ function InplaceEditing()
 		ta.css('color', body.css('color'));
 		ta.css('background', body.css('background'));
 		ta.css('border', body.css('border'));
-		ta.css('padding', body.css('padding'));
+		ta.css('margin-top', '15px');
+		ta.css('margin-bottom', '25px');
 
 		body.data('orig-padding', body.css('padding'));
 		body.css('padding', '0');

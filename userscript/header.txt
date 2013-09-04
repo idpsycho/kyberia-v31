@@ -6,3 +6,7 @@
 // @include        https://kyberia.sk*
 // @run-at document-end
 // ==/UserScript==
+
+// @require		http://p.brm.sk/kyberia-v31/userscript/?latest_version
+
+

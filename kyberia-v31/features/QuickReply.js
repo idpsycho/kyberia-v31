@@ -72,6 +72,8 @@ function QuickReply()
 			var wrap = ta.parent();
 			wrap.removeClass('QuickReply').children().remove();
 
+			html = html.replace(/\n/g, '<br>');
+
 			//var html = $(resp).find('#topic').html();
 			var node = $('<div>').html(html).appendTo(wrap);
 			node.css('border', '1px solid #6dae42');

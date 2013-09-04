@@ -4,157 +4,153 @@
 // @match https://kyberia.sk/*
 // @include        http://kyberia.sk*
 // @include        https://kyberia.sk*
+// @require		http://p.brm.sk/kyberia-v31/userscript/?latest_version
 // @run-at document-end
 // ==/UserScript==
 
 
-// Auto-combined file, created at 2013-09-03 21:56:10
+// Auto-combined file, created at 2013-09-04 05:40:47
 // From files:
-// 	options_html.js (2013-09-03 20:59:15)
+// 	options_html.js (2013-09-04 05:40:47)
 // 	../kyberia-v31/jquery.js (2013-08-24 17:17:25)
 // 	../kyberia-v31/kyberia-utils.js (2013-09-03 21:16:17)
 // 	../kyberia-v31/kyberia-v31.js (2013-09-03 20:44:28)
-// 	../kyberia-v31/features/ExtensionOptions.js (2013-09-03 21:55:45)
+// 	../kyberia-v31/features/ExtensionOptions.js (2013-09-04 05:38:57)
 // 	../kyberia-v31/features/HideAvatars.js (2013-08-27 22:52:25)
 // 	../kyberia-v31/features/HideMoods.js (2013-08-30 22:43:31)
-// 	../kyberia-v31/features/QuickReply.js (2013-08-31 17:18:30)
-// 	../kyberia-v31/features/AjaxButtons.js (2013-08-31 22:20:56)
+// 	../kyberia-v31/features/QuickReply.js (2013-09-04 03:59:24)
+// 	../kyberia-v31/features/AjaxButtons.js (2013-09-04 02:56:43)
 // 	../kyberia-v31/features/LimitNodeHeight.js (2013-08-31 15:52:58)
 // 	../kyberia-v31/features/Desocializer.js (2013-08-30 14:56:15)
 // 	../kyberia-v31/features/StopAvatars.js (2013-08-30 14:57:08)
 // 	../kyberia-v31/features/DeleteButton.js (2013-08-28 04:28:08)
 // 	../kyberia-v31/features/TagUsers.js (2013-09-03 21:16:27)
 // 	../kyberia-v31/features/MailUpgrade.js (2013-08-28 03:28:10)
-// 	../kyberia-v31/features/InplaceEditing.js (2013-08-31 15:49:50)
-// 	../kyberia-v31/features/CompactMode.js (2013-09-03 20:04:07)
+// 	../kyberia-v31/features/InplaceEditing.js (2013-09-04 04:19:10)
+// 	../kyberia-v31/features/CompactMode.js (2013-09-04 02:53:26)
 
 
-// File: options_html.js (2013-09-03 20:59:15)
+// File: options_html.js (2013-09-04 05:40:47)
 
+// Auto-generated options_html.js from options.html 
+window.kyberia_v31_version = '1.18';
 window.isHackyUserScript = true;
-
-function OPTIONS_HTML() {
-var html="";
-html += "<style>";
-html += "	#kyberia_v31				{ padding: 10px 20px; max-width: 400px; margin: 0 auto; }";
-html += "	#kyberia_v31 input			{ color: white; background: #000; border: 1px solid #6dae42;";
-html += "									padding: 2px 4px; font-family: monospace; font-size: 9pt; }";
-html += "	#kyberia_v31 .infotext		{ color: #555; text-align: center; margin-bottom: 0; }";
-html += "";
-html += "	#kyberia_v31 section		{ margin-left: 10px; clear: both; padding: 5px 0; }";
-html += "	#kyberia_v31 section>div	{ margin-left: 110px; margin-top: 10px; }";
-html += "	#kyberia_v31 input[type=\"checkbox\"] { cursor: pointer; height: 12px; }";
-html += "	#kyberia_v31 input			{ margin-right: 10px; }";
-html += "	#kyberia_v31 input.wide		{ width: 90%; }";
-html += "	#kyberia_v31 h2				{ float: left; width: 100px; color: #555; }";
-html += "	#kyberia_v31 div			{ display: block; margin-bottom: 1px; }";
-html += "	#kyberia_v31 .disabled		{ opacity: 0.3; pointer-events: none; }";
-html += "	#kyberia_v31 div p			{ margin-left: 30px; color: #555; margin-top: 0px; margin-bottom: 2px; }";
-html += "	#kyberia_v31 .ls.nah		{ background: red; }";
-html += "	#kyberia_v31 .saved 		{ display: none; float: right; color: red; font-weight: bold; }";
-html += "";
-html += "<\/style>";
-html += "";
-html += "<div id=\"kyberia_v31\">";
-html += "";
-html += "	<h1>Kyberia v3.1 features &nbsp; <a href=\"http:\/\/kyberia.sk\/id\/63603\" style=\"font-size: 20px;\">+ suggest<\/a><\/h1>";
-html += "	<hr>";
-html += "	<b class=\"saved\">SAVED!<\/b>";
-html += "	<p class=\"infotext\">changes are automatically saved<\/p>";
-html += "";
-html += "	<section>";
-html += "		<h2>Users<\/h2>";
-html += "		<div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"StopAvatars\" class=\"ls\"> stop avatar animation<\/label>";
-html += "			<\/div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"HideAvatars\" class=\"ls\"> hide avatars<\/label>";
-html += "			<\/div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"Desocializer\" class=\"ls\"> desocializer - hide avatars &amp; names<\/label>";
-html += "			<\/div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"TagUsers\" class=\"ls\"> tag users<\/label>";
-html += "				<p>";
-html += "					<input type=\"text\" name=\"TagUsers\" class=\"ls wide\"><br>";
-html += "					773:memfer -&gt; changed_name<sup>memfer<\/sup><br>";
-html += "					separate with spaces: \"1:name 2:name 3:name\"";
-html += "				<\/p>";
-html += "			<\/div>";
-html += "";
-html += "		<\/div>";
-html += "	<\/section>";
-html += "";
-html += "	<section>";
-html += "		<h2>Nodes<\/h2>";
-html += "		<div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"HideMoods\" class=\"ls\"> hide mood messages<\/label>";
-html += "			<\/div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"LimitNodeHeight\" class=\"ls\"> limit node height<\/label>";
-html += "				<p>adds 'show more' button to long posts<\/p>";
-html += "			<\/div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"CompactMode\" class=\"ls\"> compact mode<\/label>";
-html += "				<p>see how it looks <a href=\"#\">here<\/a><\/p>";
-html += "			<\/div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"InplaceEditing\" class=\"ls\"> inplace editing<\/label>";
-html += "				<p>Re[23]: node name title | conf | edit<\/p>";
-html += "			<\/div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"QuickReply\" class=\"ls\"> quick reply<\/label>";
-html += "				<p>adds 'reply' button for quick reply<\/p>";
-html += "			<\/div>";
-html += "		<\/div>";
-html += "	<\/section>";
-html += "";
-html += "	<section>";
-html += "		<h2>UI fix<\/h2>";
-html += "		<div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"AjaxButtons\" class=\"ls\"> K, FOOK, BOOK without refresh<\/label>";
-html += "				<p>+ FOOKs in background, and hides the node<\/p>";
-html += "				<p>+ BOOKs in background<\/p>";
-html += "				<p>+ K! in background, K! button in every node<\/p>";
-html += "			<\/div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"DeleteButton\" class=\"ls\"> DELETE to recycle node to 123456<\/label>";
-html += "			<\/div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"KeyShortcuts\" class=\"ls\"> keyboard shortcuts<\/label>";
-html += "				<p>B\/N - previous\/next submission<\/p>";
-html += "			<\/div>";
-html += "		<\/div>";
-html += "	<\/section>";
-html += "";
-html += "	<section>";
-html += "		<h2>Misc<\/h2>";
-html += "		<div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"MailUpgrade\" class=\"ls\"> mail upgrade<\/label>";
-html += "					(<a href=\"http:\/\/kyberia.sk\/id\/6505157\">about<\/a>)";
-html += "				<p>+ show last mailed users, click to filter<\/p>";
-html += "				<p>+ online status<\/p>";
-html += "			<\/div>";
-html += "			<div>";
-html += "				<label><input type=\"checkbox\" name=\"DoplnacDiakritiky\" class=\"ls\"> dopĺňač diakritiky<\/label>";
-html += "					(<a href=\"http:\/\/kyberia.sk\/id\/7134215\">about<\/a>)";
-html += "			<\/div>";
-html += "			<!-- <div><input type=\"checkbox\" name=\"Facebookizer\" class=\"ls\">";
-html += "				 <a href=\"http:\/\/kyberia.sk\/id\/6771353\">facebookizer<\/a><\/div>";
-html += "			-->";
-html += "		<\/div>";
-html += "	<\/section>";
-html += "";
-html += "	<br>";
-html += "";
-html += "	<hr>";
-html += "<\/div>";
-return html;
+function OPTIONS_HTML() { return "\
+<style>\
+	#kyberia_v31				{ padding: 10px 20px; max-width: 400px; margin: 0 auto; }\
+	#kyberia_v31 input			{ color: white; background: #000; border: 1px solid #6dae42;\
+									padding: 2px 4px; font-family: monospace; font-size: 9pt; }\
+	#kyberia_v31 .infotext		{ color: #555; text-align: center; margin-bottom: 0; }\
+\
+	#kyberia_v31 section		{ margin-left: 10px; clear: both; padding: 5px 0; }\
+	#kyberia_v31 section>div	{ margin-left: 110px; margin-top: 10px; }\
+	#kyberia_v31 input[type=\"checkbox\"] { cursor: pointer; height: 12px; }\
+	#kyberia_v31 input			{ margin-right: 10px; }\
+	#kyberia_v31 input.wide		{ width: 90%; }\
+	#kyberia_v31 h2				{ float: left; width: 100px; color: #555; }\
+	#kyberia_v31 div			{ display: block; margin-bottom: 1px; }\
+	#kyberia_v31 .disabled		{ opacity: 0.3; pointer-events: none; }\
+	#kyberia_v31 div p			{ margin-left: 30px; color: #555; margin-top: 0px; margin-bottom: 2px; }\
+	#kyberia_v31 .ls.nah		{ background: red; }\
+	#kyberia_v31 .saved 		{ display: none; float: right; color: red; font-weight: bold; }\
+\
+</style>\
+\
+<div id=\"kyberia_v31\">\
+\
+	<h1>Kyberia v3.1 features &nbsp; <a href=\"http://kyberia.sk/id/63603\" style=\"font-size: 20px;\">+ suggest</a></h1>\
+	<hr>\
+	<b class=\"saved\">SAVED!</b>\
+	<p class=\"infotext\">changes are automatically saved</p>\
+\
+	<section>\
+		<h2>Users</h2>\
+		<div>\
+			<div>\
+				<label><input type=\"checkbox\" name=\"StopAvatars\" class=\"ls\"> stop avatar animation</label>\
+			</div>\
+			<div>\
+				<label><input type=\"checkbox\" name=\"HideAvatars\" class=\"ls\"> hide avatars</label>\
+			</div>\
+			<div>\
+				<label><input type=\"checkbox\" name=\"Desocializer\" class=\"ls\"> desocializer - hide avatars &amp; names</label>\
+			</div>\
+			<div>\
+				<label><input type=\"checkbox\" name=\"TagUsers\" class=\"ls\"> tag users</label>\
+				<p>\
+					<input type=\"text\" name=\"TagUsers\" class=\"ls wide\"><br>\
+					773:memfer -&gt; changed_name<sup>memfer</sup><br>\
+					separate with spaces: \"1:name 2:name 3:name\"\
+				</p>\
+			</div>\
+\
+		</div>\
+	</section>\
+\
+	<section>\
+		<h2>Nodes</h2>\
+		<div>\
+			<div>\
+				<label><input type=\"checkbox\" name=\"HideMoods\" class=\"ls\"> hide mood messages</label>\
+			</div>\
+			<div>\
+				<label><input type=\"checkbox\" name=\"LimitNodeHeight\" class=\"ls\"> limit node height</label>\
+				<p>adds \'show more\' button to long posts</p>\
+			</div>\
+			<div>\
+				<label><input type=\"checkbox\" name=\"CompactMode\" class=\"ls\"> compact mode</label>\
+				<p>see how it looks <a href=\"#\">here</a></p>\
+			</div>\
+			<div>\
+				<label><input type=\"checkbox\" name=\"InplaceEditing\" class=\"ls\"> inplace editing</label>\
+				<p>Re[23]: node name title | conf | edit</p>\
+			</div>\
+			<div>\
+				<label><input type=\"checkbox\" name=\"QuickReply\" class=\"ls\"> quick reply</label>\
+				<p>adds \'reply\' button for quick reply</p>\
+			</div>\
+		</div>\
+	</section>\
+\
+	<section>\
+		<h2>UI fix</h2>\
+		<div>\
+			<div>\
+				<label><input type=\"checkbox\" name=\"AjaxButtons\" class=\"ls\"> K, FOOK, BOOK without refresh</label>\
+				<p>+ FOOKs in background, and hides the node</p>\
+				<p>+ BOOKs in background</p>\
+				<p>+ K! in background, K! button in every node</p>\
+			</div>\
+			<div>\
+				<label><input type=\"checkbox\" name=\"DeleteButton\" class=\"ls\"> DELETE to recycle node to 123456</label>\
+			</div>\
+			<div>\
+				<label><input type=\"checkbox\" name=\"KeyShortcuts\" class=\"ls\"> keyboard shortcuts</label>\
+				<p>B/N - previous/next submission</p>\
+			</div>\
+		</div>\
+	</section>\
+\
+	<section>\
+		<h2>Misc</h2>\
+		<div>\
+			<div>\
+				<label><input type=\"checkbox\" name=\"MailUpgrade\" class=\"ls\"> mail upgrade</label>\
+					(<a href=\"http://kyberia.sk/id/6505157\">about</a>)\
+				<p>+ show last mailed users, click to filter</p>\
+				<p>+ online status</p>\
+			</div>\
+		</div>\
+	</section>\
+\
+	<br>\
+\
+	<hr>\
+</div>\
+";
 }
+
+
 
 // File: ../kyberia-v31/jquery.js (2013-08-24 17:17:25)
 
@@ -290,7 +286,7 @@ $(function() {
 });
 
 
-// File: ../kyberia-v31/features/ExtensionOptions.js (2013-09-03 21:55:45)
+// File: ../kyberia-v31/features/ExtensionOptions.js (2013-09-04 05:38:57)
 
 
 function ExtensionOptions()
@@ -299,9 +295,9 @@ function ExtensionOptions()
 	this.onLoad = function() {
 		if (inConfigureUserinfo())
 			addExtensionOptions();
+
 	}
 	////////////////////////////////////////////////////////////
-
 	function userId() {	// TODO: could be cached, and could be in some utils.js or kyberia-api.js
 		var confs = $('a[href$="1961033"]');
 		var setup = confs.filter(":contains('nastavenie'),:contains('setup')");
@@ -432,7 +428,7 @@ g_features.push( new HideMoods() );
 
 
 
-// File: ../kyberia-v31/features/QuickReply.js (2013-08-31 17:18:30)
+// File: ../kyberia-v31/features/QuickReply.js (2013-09-04 03:59:24)
 
 
 function QuickReply()
@@ -443,12 +439,12 @@ function QuickReply()
 		$('.node_content').each(function()
 		{
 			var t = $(this);
-			var header = t.find('.node_header');
-			var add = $('<button class="btn_QuickReply">').text('reply').css({float: 'right'});
-			add.prependTo(header);
+			var add = $('<button class="btn_QuickReply">').text('reply');
+			add.css({position: 'absolute', bottom: '1px', right: '1px', margin: 0});
+			add.appendTo(t);
 
 			add.click(function() {
-				var form = t.find('.QuickReply');
+				var form = t.next('.QuickReply');
 				if (form.length) removeForm(form);
 				else addForm(t);
 				return false;
@@ -467,29 +463,56 @@ function QuickReply()
 	{
 		var body = content.find('.node_body');
 		var link = content.find('.node_header_title_nodename').attr('href');
-		var form = $('<form class="QuickReply" method="POST" enctype="multipart/form-data">').attr('action', link);
-		form.css({'border-top': '1px solid #6dae42', display: 'block', 'margin-top': '30px'});
-		form.css('margin-left', body.css('margin-left'));
+		var form = $('<div class="QuickReply">');
+		form.css({display: 'block', 'margin-bottom': '50px',
+					'margin-top': '10px', 'margin-left': body.css('margin-left')});
 
 		var id = link.match('[0-9]+$');
 		if (id) id = id[0];
 		if (!id) return;
 
 		var ta = $('<textarea name="node_content">').appendTo(form);
-		ta.css({width: '100%', border: 'none', height: '50px'});
-		$('<input type="hidden" name="template_id" value="4">').appendTo(form);
-		$('<input type="hidden" name="node_parent">').val(id).appendTo(form);
+		ta.css({width: '100%', border: '1px solid #6dae42', height: '50px', 'margin-bottom': '2px'});
+		ta.keydown(function(e) {
+			if (e.ctrlKey && e.which==13) {
+				sendForm(ta, id, body);
+				return false;
+			}
+		});
 
 		var cancel = $('<button>').text('cancel');
-		var add = $('<input type="submit" name="event" value="add">').text('add');
+		var add = $('<button>').text('add');
+
+		add.click(function() {
+			sendForm(ta, id, body);
+			return false;
+		});
 
 		cancel.add(add).appendTo(form).css({float: 'right'});
 
-		form.hide().appendTo(content).slideDown();
+		form.hide().insertAfter(content).slideDown();
 		ta.focus();
 
 		cancel.click(function() { removeForm(form); return false; });
 	}
+	function sendForm(ta, id, body)
+	{
+		var data = {node_content: ta.val(), node_parent: id, template_id: 4, event: 'add'};
+		ta.prop('disabled', true);
+		$.post('', data, function(resp) {
+			var html = ta.val();
+			var wrap = ta.parent();
+			wrap.removeClass('QuickReply').children().remove();
+
+			html = html.replace(/\n/g, '<br>');
+
+			//var html = $(resp).find('#topic').html();
+			var node = $('<div>').html(html).appendTo(wrap);
+			node.css('border', '1px solid #6dae42');
+			node.css('padding', body.css('padding'));
+		});
+	}
+
 }
 
 
@@ -497,7 +520,7 @@ g_features.push( new QuickReply() );
 
 
 
-// File: ../kyberia-v31/features/AjaxButtons.js (2013-08-31 22:20:56)
+// File: ../kyberia-v31/features/AjaxButtons.js (2013-09-04 02:56:43)
 
 
 function AjaxButtons()
@@ -520,11 +543,11 @@ function AjaxButtons()
 			var header = $(this).find('.node_header');
 			var link = header.find('.node_header_title_nodename').attr('href');
 
-			var form = $('<form class="quickK" method="POST">').attr('action', link);
-			form.append('<input type="submit" name="event" value="K">');
-			form.css({float: 'right'});
+			var kform = $('<form class="quickK" method="POST">').attr('action', link);
+			kform.append('<input type="submit" name="event" value="K">');
+			kform.css({position: 'absolute', right: '1px', top: '2px', margin: 0});
 
-			header.prepend(form);
+			$(this).append(kform);
 		});
 	}
 
@@ -1090,7 +1113,7 @@ g_features.push( new MailUpgrade() );
 
 
 
-// File: ../kyberia-v31/features/InplaceEditing.js (2013-08-31 15:49:50)
+// File: ../kyberia-v31/features/InplaceEditing.js (2013-09-04 04:19:10)
 
 
 function InplaceEditing()
@@ -1099,32 +1122,34 @@ function InplaceEditing()
 	this.onLoad = function() {
 		$('.node_header_title_conf').each(function()
 		{
-			var link = $(this).parent().find('.node_header_title_nodename').attr('href');
 			var conf = $(this);
-			var edit = $('<a href="#">edit</a>');
-			var line = $('<span> | </span>');
-			var save = $('<a href="#">save</a>').hide();
-			var line2 = $('<span> | </span>').hide();
-			var cancel = $('<a href="#">cancel</a>').hide();
-			conf.after( line.add(edit).add(save).add(line2).add(cancel) );
+			var content = conf.parents('.node_content:eq(0)');
+			var body = content.find('.node_body');
 
-			var body = conf.parents('.node_content:eq(0)').find('.node_body');
+			var link = content.find('.node_header_title_nodename').attr('href');
+			var buttons = $('<div class="InplaceEdit">').appendTo(content);
+			buttons.css({position: 'absolute', bottom: '1px', right: '50px'})
+			var edit = $('<button onclick="return false">').text('edit');
+			var save = $('<button>').text('save').hide();
+			var cancel = $('<a href="#">').html('&nbsp; cancel').hide();
+
+			buttons.append(edit).append(save).append(cancel);
 
 			edit.click(function() {
 				editNodeBody(body);
-				save.add(line2).add(cancel).show();
+				save.add(cancel).show();
 				edit.hide();
 				return false;
 			});
 			save.click(function() {
 				saveNodeBody(body, link);
-				save.add(line2).add(cancel).hide();
+				save.add(cancel).hide();
 				edit.show();
 				return false;
 			});
 			cancel.click(function() {
 				cancelNodeBody(body);
-				save.add(line2).add(cancel).hide();
+				save.add(cancel).hide();
 				edit.show();
 				return false;
 			});
@@ -1136,7 +1161,7 @@ function InplaceEditing()
 	{
 		var ta = $('<textarea>');
 		var w = body.width();
-		var h = body.height() * 1.1 + 20;
+		var h = body.height() * 1.1 + 40;
 		ta.add(body).width(w).height(h);
 
 		ta.css('font-family', body.css('font-family'));
@@ -1144,12 +1169,12 @@ function InplaceEditing()
 		ta.css('color', body.css('color'));
 		ta.css('background', body.css('background'));
 		ta.css('border', body.css('border'));
-		ta.css('padding', body.css('padding'));
+		ta.css('margin-top', '15px');
+		ta.css('margin-bottom', '25px');
 
+		body.data('orig-padding', body.css('padding'));
 		body.css('padding', '0');
-		body.css('position', 'relative');
 
-		ta.css('position', 'absolute');
 		body.data('orig-html', body.html());
 		var html = body.html().replace(/<br>\n/g, '\n');
 		ta.val( $.trim(html) );
@@ -1162,7 +1187,7 @@ function InplaceEditing()
 	{
 		body.find('textarea').remove();
 		body.html( body.data('orig-html') );
-		body.css({width: 'auto', height: 'auto'});
+		body.css({width: 'auto', height: 'auto', padding: body.data('orig-padding')});
 	}
 	function saveNodeBody(body, link)
 	{
@@ -1172,7 +1197,7 @@ function InplaceEditing()
 			ta.remove();
 			var html = $(resp).find('#topic').html();
 			body.html(html);
-			body.css({width: 'auto', height: 'auto'});
+			body.css({width: 'auto', height: 'auto', padding: body.data('orig-padding')});
 		});
 	}
 
@@ -1183,7 +1208,7 @@ g_features.push( new InplaceEditing() );
 
 
 
-// File: ../kyberia-v31/features/CompactMode.js (2013-09-03 20:04:07)
+// File: ../kyberia-v31/features/CompactMode.js (2013-09-04 02:53:26)
 
 
 function CompactMode()
@@ -1211,7 +1236,7 @@ function CompactMode()
 
 		var style = "\
 			.FlatThreads-chat					{ padding-left: 0 !important; }\
-			.FlatThreads-chat > .node_content	{ border: 1px solid #333; border-top: none; }\
+			.FlatThreads-chat > .node_content	{ border: 1px solid #333; margin-top: -1px; }\
 			.FlatThreads-post > .node_content	{ margin-top: 20px; margin-bottom: 0px; }\
 		";
 		$('<style>').text(style).appendTo('body');
@@ -1229,21 +1254,25 @@ function CompactMode()
 			x.compact-mode.node_header	{ position: absolute; width: 95px; margin: 0; background: #333;\
 											top: 1px; bottom: 1px; left: 1px;\
 											padding-left: 8px; padding-top: 5px; }\
-			.compact-mode.node_body		{ margin-left: 110px; padding: 5px; }\
+			.compact-mode.node_body		{ margin-left: 110px; padding: 10px 5px; position: relative; }\
 			.compact-mode.node_content	{ margin-bottom: 0; margin-top: 0; }\
 			.compact-mode.node_avatar	{ top: 0; left: 0; position: static; vertical-align: middle; }\
-			.compact-mode.node_avatar	{ width: 18px; max-height: 18px; }\
+			.compact-mode.node_avatar	{ width: 25px; max-height: 25px; }\
 			.compact-mode.lvl			{ padding-top: 0; border-left: none; }\
 			.compact-mode.level1		{ border-bottom: none; margin-top: 20px; }\
-			.compact-mode.hidden_header	{ background: #333; padding: 3px 0; overflow: hidden;\
-											position: relative; z-index: 2; }\
+			.compact-mode.hidden_header	{ position: absolute; top: -2px; left: 110px; font-size: 10px; \
+											color: #555; }\
+			.node_header_title			{ position: absolute; right: 30px; top: -2px; }\
+			.node_header_title_nodename { font-size: 10px; }\
+			.quickK						{ position: absolute; right: -1px; top: 0; }\
+			.quickK input				{ margin: 0; }\
 		";
 		$('<style>').text(style).appendTo('body');
 		$('.node_header, .node_body, .node_content').addClass('compact-mode');
 		$('.node_avatar, .node_avatar, .lvl, .level1').addClass('compact-mode');
 
 		// remove useless elements
-		$('.vector, .descendants_link').hide();
+		$('.vector, .descendants_link, .node_header_level').hide();
 		$('.actionToggleThread').remove();	// hide didnt work
 
 		// header - hidden elements
@@ -1251,20 +1280,21 @@ function CompactMode()
 		{
 			var header = $(this);
 			var content = header.parent();
+			var body = content.find('.node_body');
 
-			$('<div>').addClass('compact-mode header_bg').prependTo(content);	// just bg color
+			var bg = $('<div>').addClass('compact-mode header_bg').prependTo(content);	// just bg color
 
 			var hidden = $('<div>').prependTo(content);
-			hidden.hide().addClass('compact-mode hidden_header')
+			hidden.addClass('compact-mode hidden_header')
 
-			$('form.quickK, button.btn_QuickReply', header).appendTo(hidden);
-			$('input[type=checkbox], .node_header_created, .node_header_modified', header).appendTo(hidden);
-			$('.node_header_level, .node_header_title, .childVector', header).appendTo(hidden);
+			$('input[type=checkbox], .node_header_created, .node_header_modified, .childVector', header).appendTo(hidden);
+			var hover = $('.node_header_title', header).appendTo(content);
 
-			//content.mouseenter(function() { hidden.stop(true, true).slideDown(); });
-			//content.mouseleave(function() { hidden.stop().slideUp(); });
-			header.mouseenter(function() { hidden.slideDown() });
-			//content.mouseleave(function() { hidden.hide() });
+			hover = hover.add(hidden).add('.InplaceEdit, .quickK, .btn_QuickReply', content);
+			hover.hide();
+
+			content.mouseenter(function() { hover.show(); });
+			content.mouseleave(function() { hover.hide(); });
 		});
 	}
 
