@@ -19,11 +19,11 @@ function AjaxButtons()
 			var header = $(this).find('.node_header');
 			var link = header.find('.node_header_title_nodename').attr('href');
 
-			var form = $('<form class="quickK" method="POST">').attr('action', link);
-			form.append('<input type="submit" name="event" value="K">');
-			form.css({float: 'right'});
+			var kform = $('<form class="quickK" method="POST">').attr('action', link);
+			kform.append('<input type="submit" name="event" value="K">');
+			kform.css({position: 'absolute', right: '1px', top: '2px', margin: 0});
 
-			header.prepend(form);
+			$(this).append(kform);
 		});
 	}
 

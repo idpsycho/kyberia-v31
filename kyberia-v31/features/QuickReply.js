@@ -7,12 +7,12 @@ function QuickReply()
 		$('.node_content').each(function()
 		{
 			var t = $(this);
-			var header = t.find('.node_header');
-			var add = $('<button class="btn_QuickReply">').text('reply').css({float: 'right'});
-			add.prependTo(header);
+			var add = $('<button class="btn_QuickReply">').text('reply');
+			add.css({position: 'absolute', bottom: '1px', right: '1px', margin: 0});
+			add.appendTo(t);
 
 			add.click(function() {
-				var form = t.find('.QuickReply');
+				var form = t.next('.QuickReply');
 				if (form.length) removeForm(form);
 				else addForm(t);
 				return false;
@@ -31,29 +31,54 @@ function QuickReply()
 	{
 		var body = content.find('.node_body');
 		var link = content.find('.node_header_title_nodename').attr('href');
-		var form = $('<form class="QuickReply" method="POST" enctype="multipart/form-data">').attr('action', link);
-		form.css({'border-top': '1px solid #6dae42', display: 'block', 'margin-top': '30px'});
-		form.css('margin-left', body.css('margin-left'));
+		var form = $('<div class="QuickReply">');
+		form.css({display: 'block', 'margin-bottom': '50px',
+					'margin-top': '10px', 'margin-left': body.css('margin-left')});
 
 		var id = link.match('[0-9]+$');
 		if (id) id = id[0];
 		if (!id) return;
 
 		var ta = $('<textarea name="node_content">').appendTo(form);
-		ta.css({width: '100%', border: 'none', height: '50px'});
-		$('<input type="hidden" name="template_id" value="4">').appendTo(form);
-		$('<input type="hidden" name="node_parent">').val(id).appendTo(form);
+		ta.css({width: '100%', border: '1px solid #6dae42', height: '50px', 'margin-bottom': '2px'});
+		ta.keydown(function(e) {
+			if (e.ctrlKey && e.which==13) {
+				sendForm(ta, id, body);
+				return false;
+			}
+		});
 
 		var cancel = $('<button>').text('cancel');
-		var add = $('<input type="submit" name="event" value="add">').text('add');
+		var add = $('<button>').text('add');
+
+		add.click(function() {
+			sendForm(ta, id, body);
+			return false;
+		});
 
 		cancel.add(add).appendTo(form).css({float: 'right'});
 
-		form.hide().appendTo(content).slideDown();
+		form.hide().insertAfter(content).slideDown();
 		ta.focus();
 
 		cancel.click(function() { removeForm(form); return false; });
 	}
+	function sendForm(ta, id, body)
+	{
+		var data = {node_content: ta.val(), node_parent: id, template_id: 4, event: 'add'};
+		ta.prop('disabled', true);
+		$.post('', data, function(resp) {
+			var html = ta.val();
+			var wrap = ta.parent();
+			wrap.removeClass('QuickReply').children().remove();
+
+			//var html = $(resp).find('#topic').html();
+			var node = $('<div>').html(html).appendTo(wrap);
+			node.css('border', '1px solid #6dae42');
+			node.css('padding', body.css('padding'));
+		});
+	}
+
 }
 
 

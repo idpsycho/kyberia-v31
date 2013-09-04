@@ -24,7 +24,7 @@ function CompactMode()
 
 		var style = "\
 			.FlatThreads-chat					{ padding-left: 0 !important; }\
-			.FlatThreads-chat > .node_content	{ border: 1px solid #333; border-top: none; }\
+			.FlatThreads-chat > .node_content	{ border: 1px solid #333; margin-top: -1px; }\
 			.FlatThreads-post > .node_content	{ margin-top: 20px; margin-bottom: 0px; }\
 		";
 		$('<style>').text(style).appendTo('body');
@@ -42,21 +42,25 @@ function CompactMode()
 			x.compact-mode.node_header	{ position: absolute; width: 95px; margin: 0; background: #333;\
 											top: 1px; bottom: 1px; left: 1px;\
 											padding-left: 8px; padding-top: 5px; }\
-			.compact-mode.node_body		{ margin-left: 110px; padding: 5px; }\
+			.compact-mode.node_body		{ margin-left: 110px; padding: 10px 5px; position: relative; }\
 			.compact-mode.node_content	{ margin-bottom: 0; margin-top: 0; }\
 			.compact-mode.node_avatar	{ top: 0; left: 0; position: static; vertical-align: middle; }\
-			.compact-mode.node_avatar	{ width: 18px; max-height: 18px; }\
+			.compact-mode.node_avatar	{ width: 25px; max-height: 25px; }\
 			.compact-mode.lvl			{ padding-top: 0; border-left: none; }\
 			.compact-mode.level1		{ border-bottom: none; margin-top: 20px; }\
-			.compact-mode.hidden_header	{ background: #333; padding: 3px 0; overflow: hidden;\
-											position: relative; z-index: 2; }\
+			.compact-mode.hidden_header	{ position: absolute; top: -2px; left: 110px; font-size: 10px; \
+											color: #555; }\
+			.node_header_title			{ position: absolute; right: 30px; top: -2px; }\
+			.node_header_title_nodename { font-size: 10px; }\
+			.quickK						{ position: absolute; right: -1px; top: 0; }\
+			.quickK input				{ margin: 0; }\
 		";
 		$('<style>').text(style).appendTo('body');
 		$('.node_header, .node_body, .node_content').addClass('compact-mode');
 		$('.node_avatar, .node_avatar, .lvl, .level1').addClass('compact-mode');
 
 		// remove useless elements
-		$('.vector, .descendants_link').hide();
+		$('.vector, .descendants_link, .node_header_level').hide();
 		$('.actionToggleThread').remove();	// hide didnt work
 
 		// header - hidden elements
@@ -64,20 +68,21 @@ function CompactMode()
 		{
 			var header = $(this);
 			var content = header.parent();
+			var body = content.find('.node_body');
 
-			$('<div>').addClass('compact-mode header_bg').prependTo(content);	// just bg color
+			var bg = $('<div>').addClass('compact-mode header_bg').prependTo(content);	// just bg color
 
 			var hidden = $('<div>').prependTo(content);
-			hidden.hide().addClass('compact-mode hidden_header')
+			hidden.addClass('compact-mode hidden_header')
 
-			$('form.quickK, button.btn_QuickReply', header).appendTo(hidden);
-			$('input[type=checkbox], .node_header_created, .node_header_modified', header).appendTo(hidden);
-			$('.node_header_level, .node_header_title, .childVector', header).appendTo(hidden);
+			$('input[type=checkbox], .node_header_created, .node_header_modified, .childVector', header).appendTo(hidden);
+			var hover = $('.node_header_title', header).appendTo(content);
 
-			//content.mouseenter(function() { hidden.stop(true, true).slideDown(); });
-			//content.mouseleave(function() { hidden.stop().slideUp(); });
-			header.mouseenter(function() { hidden.slideDown() });
-			//content.mouseleave(function() { hidden.hide() });
+			hover = hover.add(hidden).add('.InplaceEdit, .quickK, .btn_QuickReply', content);
+			hover.hide();
+
+			content.mouseenter(function() { hover.show(); });
+			content.mouseleave(function() { hover.hide(); });
 		});
 	}
 
