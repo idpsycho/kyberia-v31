@@ -8,6 +8,7 @@ function InplaceEditing()
 			var conf = $(this);
 			var content = conf.parents('.node_content:eq(0)');
 			var body = content.find('.node_body');
+			$('<style>').text('.node_body { padding-bottom: 18px; }').appendTo('body');
 
 			var link = content.find('.node_header_title_nodename').attr('href');
 			var buttons = $('<div class="InplaceEdit">').appendTo(content);

@@ -7,12 +7,35 @@ function AjaxButtons()
 		var style = "button:hover, input[type=submit]:hover { cursor: pointer; opacity: 0.5; }";
 		$('<style>').text(style).appendTo('body');
 
+		addButtonsToCONS();
+
 		addKtoEveryNode();
 
 		ajaxifyButtons();
 	}
 	////////////////////////////////////////////////////////////
 
+	function addButtonsToCONS()
+	{
+		if (!window.location.href.match(/\/id\/5286347$/))
+			return;
+
+		$('a[title=skip]').each(function() {
+			var bordered = $(this).parents('table.bordered:eq(0)');
+			var header = bordered.find('td.header:eq(0)');
+			var node_link = header.find('a:eq(0)').attr('href');
+
+			$(this).after( makeButton(node_link, 'fook') );
+			$(this).after( makeButton(node_link, 'book') );
+			$(this).after( makeButton(node_link, 'K') );
+		});
+	}
+	function makeButton(node_link, value)
+	{
+		var form = $('<form method="POST">').attr('action', node_link);
+		var submit = $('<input name="event" type="submit">').val(value);
+		return form.append(submit);
+	}
 	function addKtoEveryNode()
 	{
 		$('.node_content').each(function() {

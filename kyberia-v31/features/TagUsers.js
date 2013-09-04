@@ -19,8 +19,10 @@ function TagUsers()
 				if (!href) return;
 
 				var re = new RegExp('\/id\/'+RegExp.escape(id)+'$');
-				if (href.match(re))
-					$(this).append( $('<sup>').text(user) );
+				if (href.match(re)) {
+					var changed_nick = $(this).text();
+					$(this).html( user ).append( $('<sup>').text(changed_nick) );
+				}
 			});
 		}
 	}

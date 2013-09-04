@@ -17,6 +17,8 @@ function QuickReply()
 				else addForm(t);
 				return false;
 			});
+
+			$('<style>').text('.node_body { padding-bottom: 18px; }').appendTo('body');
 		});
 	};
 	///////////////////////////////////////////////
