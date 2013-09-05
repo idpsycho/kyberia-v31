@@ -5,6 +5,6 @@
 // @match		https://kyberia.sk/*
 // @include		http://kyberia.sk*
 // @include		https://kyberia.sk*
-// @run-at		document_start
+// @run-at		document-start
 // @icon		http://p.brm.sk/kyberia-v31-userscript/icon.png
 // ==/UserScript==
