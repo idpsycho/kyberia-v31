@@ -40,7 +40,7 @@ function ShowKGivers()
 			k.mouseenter(function() {
 				var t = time();
 				k.data('entered', t).data('left', 0);
-				console.log('entered: '+t);
+				//console.log('entered: '+t);
 
 				if (showK_list(k)) return;
 
@@ -52,7 +52,7 @@ function ShowKGivers()
 			k.mouseleave(function() {
 				var t = time();
 				k.data('left', t).data('entered', 0);
-				console.log('left: '+t);
+				//console.log('left: '+t);
 				setTimeout(function() {
 					if (k.data('left') == t) hideK_list(k);
 				}, waitBeforeLoad);

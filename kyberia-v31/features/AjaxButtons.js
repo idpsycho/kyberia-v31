@@ -82,8 +82,9 @@ function AjaxButtons()
 		books().add(unbooks()).on('click', function() {
 			var btn = $(this);
 			var val = btn.val();
+			var cat = btn.parents('form:eq(0)').find('[name=bookcat_id]').val();
 			var newVal = val=='book'?'unbook':'book';
-			$.post(actionOf(btn), {'event':val}, function() {
+			$.post(actionOf(btn), {event:val, bookcat_id:cat}, function() {
 				btn.val( newVal );
 			});
 			return false;

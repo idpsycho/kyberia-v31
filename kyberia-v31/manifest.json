@@ -1,6 +1,6 @@
 {
 	"name": "Kyberia v3.1 features",
-	"version": "1.27",
+	"version": "1.28",
 	"description": "Adds features that make kyberia.sk more fun.",
 
 	"permissions": [ "storage" ],
@@ -21,6 +21,7 @@
 			"features/ExtensionOptions.js",
 
 			"features/ShowKGivers.js",
+			"features/FlashUnloader.js",
 			"features/HideAvatars.js",
 			"features/HideMoods.js",
 			"features/QuickReply.js",
