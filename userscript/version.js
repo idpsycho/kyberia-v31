@@ -1,0 +1,1 @@
+localStorage['KYBERIA_V31_USERSCRIPT_LAST_VERSION'] = '1.23';

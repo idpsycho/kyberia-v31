@@ -1,6 +1,5 @@
 // Auto-generated options_html.js from options.html 
-window.kyberia_v31_version = '1.18';
-window.isHackyUserScript = true;
+window.KYBERIA_V31_USERSCRIPT_VERSION = '1.23';
 function OPTIONS_HTML() { return "\
 <style>\
 	#kyberia_v31				{ padding: 10px 20px; max-width: 400px; margin: 0 auto; }\
@@ -45,7 +44,7 @@ function OPTIONS_HTML() { return "\
 				<label><input type=\"checkbox\" name=\"TagUsers\" class=\"ls\"> tag users</label>\
 				<p>\
 					<input type=\"text\" name=\"TagUsers\" class=\"ls wide\"><br>\
-					773:memfer -&gt; changed_name<sup>memfer</sup><br>\
+					773:memfer -&gt; memfer<sup>changed_name</sup><br>\
 					separate with spaces: \"1:name 2:name 3:name\"\
 				</p>\
 			</div>\
@@ -64,12 +63,16 @@ function OPTIONS_HTML() { return "\
 				<p>adds \'show more\' button to long posts</p>\
 			</div>\
 			<div>\
+				<label><input type=\"checkbox\" name=\"LimitNodeWidth\" class=\"ls\"> limit node width</label>\
+				<p>sets max for node/image width in Knew</p>\
+			</div>\
+			<div>\
 				<label><input type=\"checkbox\" name=\"CompactMode\" class=\"ls\"> compact mode</label>\
-				<p>see how it looks <a href=\"#\">here</a></p>\
+				<p>check description and picture <a href=\"http://kyberia.sk/id/7313226/\">here</a></p>\
 			</div>\
 			<div>\
 				<label><input type=\"checkbox\" name=\"InplaceEditing\" class=\"ls\"> inplace editing</label>\
-				<p>Re[23]: node name title | conf | edit</p>\
+				<p>allows you to edit node without opening it</p>\
 			</div>\
 			<div>\
 				<label><input type=\"checkbox\" name=\"QuickReply\" class=\"ls\"> quick reply</label>\

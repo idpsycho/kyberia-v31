@@ -1,12 +1,9 @@
 // ==UserScript==
-// @name Kyberia-v31
-// @match http://kyberia.sk/*
-// @match https://kyberia.sk/*
-// @include        http://kyberia.sk*
-// @include        https://kyberia.sk*
-// @run-at document-end
+// @name		Kyberia-v31
+// @version		VERSION
+// @match		http://kyberia.sk/*
+// @match		https://kyberia.sk/*
+// @include		http://kyberia.sk*
+// @include		https://kyberia.sk*
+// @run-at		document-end
 // ==/UserScript==
-
-// @require		http://p.brm.sk/kyberia-v31/userscript/?latest_version
-
-

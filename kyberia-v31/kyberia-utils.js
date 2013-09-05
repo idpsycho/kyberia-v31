@@ -11,6 +11,7 @@ var g_defaultFeatures = {
 	'LimitNodeWidth': 1,
 	'InplaceEditing': 1,
 	'QuickReply': 1,
+	'ShowKGivers': 1,
 };
 
 var g_defaultFeatureValues = {
@@ -38,7 +39,7 @@ function setFeatureEnabled(name, b)
 function isFeatureEnabled(name)
 {
 	if (!name) return;
-	if (name == 'ExtensionOptions') return true;
+	if (name=='ExtensionOptions' || name=='AutoUpdater') return true;
 
 	var lsKey = '_kyberia_v31_feature_enabled_'+name;
 	var enabled = localStorage[lsKey];
