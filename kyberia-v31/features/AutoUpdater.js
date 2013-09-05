@@ -78,7 +78,8 @@ function AutoUpdater()
 	}
 	function checkForUpdate() {
 		localStorage['KYBERIA_V31_USERSCRIPT_LAST_VERSION_CHECK'] = time();
-		$('<script>').attr('src', urlVersion).appendTo('body');
+		var operaFuckYouFix = '?'+Math.random();
+		$('<script>').attr('src', urlVersion+operaFuckYouFix).appendTo('body');
 	}
 	function lastVersion() { return localStorage['KYBERIA_V31_USERSCRIPT_LAST_VERSION']; }
 	function currVersion() { return window.KYBERIA_V31_USERSCRIPT_VERSION; }
@@ -89,6 +90,11 @@ function AutoUpdater()
 		return last != curr;
 	}
 }
+
+AutoUpdater.checkForUpdateNow = function() {
+	localStorage['KYBERIA_V31_USERSCRIPT_LAST_VERSION_CHECK'] = 0;
+	(new AutoUpdater()).onLoad();
+};
 
 AutoUpdater.version = function() {
 	if (window.KYBERIA_V31_USERSCRIPT_VERSION)

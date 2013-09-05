@@ -16,14 +16,32 @@
 	#kyberia_v31 .ls.nah		{ background: red; }
 	#kyberia_v31 .saved 		{ display: none; float: right; color: red; font-weight: bold; }
 
+	.toggle-bug-report			{ float: left; }
+	.bug-report					{ margin: 15px 0; }
+	.bug-report input[type=submit] { float: right; }
+
 </style>
 
 <div id="kyberia_v31">
 
 	<h1>Kyberia v3.1 features &nbsp; <a href="http://kyberia.sk/id/63603" style="font-size: 20px;">+ suggest</a></h1>
 	<hr>
+	<button class="toggle-bug-report">bug report</button>
 	<b class="saved">SAVED!</b>
 	<p class="infotext">changes are automatically saved</p>
+
+	<div class="bug-report">
+		<form action="/id/7313222/" method="POST" name="formular">
+			<input type="hidden" name="node_name">
+			<input type="hidden" name="node_parent" value="7313222">
+			<input type="hidden" name="template_id" value="4">
+			<textarea name="node_content"></textarea>
+			<br>
+
+			prida sa ako prispevok do <a href="http://kyberia.sk/id/7313222" target="_blank">fora</a>
+			<input type="submit" name="event" value="add">
+		</form>
+	</div>
 
 	<section>
 		<h2>Users</h2>

@@ -10,7 +10,8 @@ function ShowKGivers()
 		$('td > span.most_important', 'table.bordered').each(function() {
 			var k = $(this);
 			var bordered = k.parents('table.bordered:eq(0)');
-			var id = bordered.find('form:eq(0)').attr('action').match(/[0-9]+$/);
+			var id = bordered.find('form:eq(0)').attr('action');
+			if (id) id = id.match(/[0-9]+$/);
 			if (!id) return;
 			k.addClass('K_value').data('node_id', id);
 		});
@@ -18,14 +19,16 @@ function ShowKGivers()
 		$('.node_header_k').each(function() {
 			var k = $(this);
 			var content = k.parents('.node_content:eq(0)');
-			var id = content.find('a.node_header_title_nodename').attr('href').match(/[0-9]+$/);
+			var id = content.find('a.node_header_title_nodename').attr('href');
+			if (id) id = id.match(/[0-9]+$/);
 			if (!id) return;
 			k.addClass('K_value').data('node_id', id);
 		});
 
 		$('.node_info2 > .most_important:eq(0)').each(function() {
 			var k = $(this);
-			var id = $('#sidebar_node a:eq(0)').attr('href').match(/[0-9]+$/);
+			var id = $('#sidebar_node a:eq(0)').attr('href');
+			if (id) id = id.match(/[0-9]+$/);
 			if (!id) return;
 			k.addClass('K_value').data('node_id', id);
 		});
@@ -47,8 +50,8 @@ function ShowKGivers()
 				setTimeout(function() {
 					if (k.data('entered') == t) loadK_list(k, id);
 				}, waitBeforeLoad);
-
 			});
+
 			k.mouseleave(function() {
 				var t = time();
 				k.data('left', t).data('entered', 0);
@@ -84,7 +87,8 @@ function ShowKGivers()
 			var trs = $(resp).find('table.bordered:last tr');
 			var list = $();
 			trs.each(function() {
-				var gaveK = $(this).text().match(/K , [0-9]+ visitz[ ]*$/);
+				var gaveK = $(this).text();
+				if (gaveK) gaveK = gaveK.match(/K , [0-9]+ visitz[ ]*$/);
 				if (!gaveK)
 					return false;
 

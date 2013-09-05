@@ -8,25 +8,11 @@ function ExtensionOptions()
 
 	}
 	////////////////////////////////////////////////////////////
-	function userId() {	// TODO: could be cached, and could be in some utils.js or kyberia-api.js
-		var confs = $('a[href$="1961033"]');
-		var setup = confs.filter(":contains('nastavenie'),:contains('setup')");
-		if (!setup.length)
-			setup = confs.eq(0);
-
-		var href = setup.eq(0).attr('href');
-		if (!href)
-			return;
-
-		var m = href.match(/\/id\/([0-9]+)/);
-		if (!m || m.length != 2) return;
-		return m[1];
-	}
 	function inConfigureUserinfo() {
 		var id = userId();
 		if (!id) return;
 		id = RegExp.escape( id );
-		var re = new RegExp('\/id\/'+id+'\/1961033$')	// http://kyberia.sk/id/1297258
+		var re = new RegExp('\/id\/'+id+'\/1961033.*$')	// http://kyberia.sk/id/1297258
 		return window.location.href.match(re);
 	}
 
@@ -45,9 +31,33 @@ function ExtensionOptions()
 	function addExtensionOptions()
 	{
 		getOptionsHtml(function(html) {
-			$(html).insertBefore('#configure');
+			var options = $(html).insertBefore('#configure');
+
+			$('.bug-report').hide();
+			$('.toggle-bug-report').click(function() {
+				var b = $('.bug-report').slideToggle().is(':visible');
+				prepareBugReport(options);
+				return false;
+			});
+
 			applyOptionsJavascript();
 		});
+	}
+	function prepareBugReport(options)
+	{
+		var v = AutoUpdater.version();
+		var u = AutoUpdater.is_userscript() ? ' (userscript)' : '';
+		var browser = getBrowserInfo();
+		var header_template = getHeaderTemplate();
+		var bug = '';
+		bug += 'bug report, v'+v+u+', '+browser+'\n';
+		bug += 'header: '+header_template+'\n';
+		bug += 'info: ';
+		var ta = options.find('.bug-report textarea').css({ width: '100%' });
+		ta.val(bug).focus();
+
+		$('[name=node_name]').val('bug report, v'+v+u);
+		moveCaretToEnd(ta);
 	}
 	function applyOptionsJavascript()
 	{

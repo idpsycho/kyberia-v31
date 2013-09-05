@@ -1,11 +1,10 @@
 {
 	"name": "Kyberia v3.1 features",
-	"version": "1.28",
+	"version": "1.29",
 	"description": "Adds features that make kyberia.sk more fun.",
 
 	"permissions": [ "storage" ],
 	"web_accessible_resources": ["icon.png", "options.html", "jquery-1.10.2.min.map"],
-	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
 
 	"icons": {
 		"128": "icon.png"
