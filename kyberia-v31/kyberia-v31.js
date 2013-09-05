@@ -13,8 +13,8 @@ function onReady()
 		feature.onLoad();
 	}
 
-	if (analyticsOnceADay() && window.chrome)
-		window.chrome.runtime.sendMessage( {arrEnabledFeatures: arrEnabledFeatures} );
+	if (analyticsOnceADay())
+		sendAnalyticsInfo( arrEnabledFeatures );
 
 	// not necessary, but very useful for debugging..
 	$('<script src="http://code.jquery.com/jquery-1.10.1.min.js">').appendTo('body');

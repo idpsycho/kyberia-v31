@@ -12,13 +12,19 @@
 */
 	if ($_POST['combine'])
 	{
+		if (!file_exists('../kyberia-v31-userscript'))
+			mkdir('../kyberia-v31-userscript');
+
+		$fname_USER_JS = '../kyberia-v31-userscript/kyberia-v31.user.js';
+		$fname_VERSION_JS = '../kyberia-v31-userscript/version.js';
+
 		// save version number to file latest_version
 		$json = file_get_contents("../kyberia-v31/manifest.json");
 		$json = json_decode($json);
 		$VERSION = $json->version;
 
 		$version_js = "localStorage['KYBERIA_V31_USERSCRIPT_LAST_VERSION'] = '$VERSION';\n";
-		file_put_contents('version.js', $version_js);
+		file_put_contents($fname_VERSION_JS, $version_js);
 
 		// put options.html into js, and set version..
 		$options_html = file_get_contents('../kyberia-v31/options.html');
@@ -32,42 +38,21 @@
 		$options_js .= "\n}\n\n";
 		file_put_contents('options_html.js', $options_js);
 
+		$arrMerge = array("options_html.js");
+		foreach ($json->content_scripts[0]->js as $fname)
+			$arrMerge[] = "../kyberia-v31/".$fname;
 
 
 		include "FileCombiner.php";
-		FileCombiner::checkedCombine('kyberia-v31.user.js', array(
-			"options_html.js",
-			"../kyberia-v31/jquery.js",
-			"../kyberia-v31/kyberia-utils.js",
-			"../kyberia-v31/kyberia-v31.js",
+		FileCombiner::checkedCombine('kyberia-v31-headerless.js', $arrMerge, 'ignore check');
 
-			"../kyberia-v31/features/AutoUpdater.js",
-			"../kyberia-v31/features/ExtensionOptions.js",
-
-			"../kyberia-v31/features/HideAvatars.js",
-			"../kyberia-v31/features/HideMoods.js",
-			"../kyberia-v31/features/ShowKGivers.js",
-			"../kyberia-v31/features/QuickReply.js",
-			"../kyberia-v31/features/AjaxButtons.js",
-			"../kyberia-v31/features/LimitNodeHeight.js",
-			"../kyberia-v31/features/LimitNodeWidth.js",
-			"../kyberia-v31/features/Desocializer.js",
-			"../kyberia-v31/features/StopAvatars.js",
-			"../kyberia-v31/features/DeleteButton.js",
-			"../kyberia-v31/features/TagUsers.js",
-			"../kyberia-v31/features/MailUpgrade.js",
-			"../kyberia-v31/features/InplaceEditing.js",
-			"../kyberia-v31/features/CompactMode.js"
-			),
-			'ignore check'
-		);
-
-		$content = file_get_contents('kyberia-v31.user.js');
+		$content = file_get_contents('kyberia-v31-headerless.js');
 		$header = file_get_contents('header.txt');
 		$header = str_replace('VERSION', $VERSION, $header);
-		//header('Location: ?#');
+
 		$out = $header ."\n\n". $content;
-		file_put_contents('kyberia-v31.user.js', $out);
+		file_put_contents($fname_USER_JS, $out);
+
 		echo "combined just now: $VERSION";
 	}
 

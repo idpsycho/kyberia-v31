@@ -23,14 +23,16 @@ function ExtensionOptions()
 		return m[1];
 	}
 	function inConfigureUserinfo() {
-		var id = RegExp.escape( userId() );
+		var id = userId();
+		if (!id) return;
+		id = RegExp.escape( id );
 		var re = new RegExp('\/id\/'+id+'\/1961033$')	// http://kyberia.sk/id/1297258
 		return window.location.href.match(re);
 	}
 
 	function getOptionsHtml(fn)
 	{
-		if (window.chrome && !window.isHackyUserScript)
+		if (!window.KYBERIA_V31_USERSCRIPT_VERSION && window.chrome)
 		{
 			var url = window.chrome.extension.getURL("options.html");
 			$.get(url, fn, 'html');

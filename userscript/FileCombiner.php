@@ -9,12 +9,12 @@ class FileCombiner
 		$needFT = 0;
 		foreach ($inFnames as $inf)
 		{
-			$ft = filemtime($inf);
+			$ft = @filemtime($inf);
 			if ($dbg) echo "$inf - ".date("Y-m-d H:i:s", $ft)."<br>";
 			$needFT = max($ft, $needFT);
 		}
 
-		$ft = filemtime($outFname);
+		$ft = @filemtime($outFname);
 		if ($dbg) echo "$outFname - ".date("Y-m-d H:i:s", $ft)."<br>";
 
 		if (!$ignoreCheck)

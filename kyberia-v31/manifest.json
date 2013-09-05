@@ -1,6 +1,6 @@
 {
 	"name": "Kyberia v3.1 features",
-	"version": "1.23",
+	"version": "1.27",
 	"description": "Adds features that make kyberia.sk more fun.",
 
 	"permissions": [ "storage" ],
@@ -10,12 +10,10 @@
 	"icons": {
 		"128": "icon.png"
 	},
-	"background": {
-		"scripts": ["background.js"]
-	},
 	"content_scripts": [ {
 		"js": [
 			"jquery.js",
+			"analytics.js",
 			"kyberia-utils.js",
 			"kyberia-v31.js",
 

@@ -6,14 +6,14 @@
 	2. if last != current
 		show download link
 */
-
 function AutoUpdater()
 {
 	this.name = 'AutoUpdater';
 	this.onLoad = function() {
-		if (window.chrome) return;
-		if (!localStorage) return;
 		if (!window.KYBERIA_V31_USERSCRIPT_VERSION) return;
+
+		if (window.chrome)
+			chromeShouldntUseUserscript();
 
 		if (onceADay()) checkForUpdate();
 
@@ -21,12 +21,22 @@ function AutoUpdater()
 			message().prependTo('body');
 	}
 
-	//var urlBase = 'http://p.brm.sk/kyberia-v31/userscript';
-	var urlBase = 'http://l/kyberia-v31/userscript';
+	var urlBase = 'http://p.brm.sk/kyberia-v31-userscript';
+	//var urlBase = 'http://l/kyberia-v31-userscript';
 	var urlVersion = urlBase+'/version.js';
 	var urlDownload = urlBase+'/kyberia-v31.user.js';
 	var urlChangelog = 'https://github.com/idpsycho/kyberia-v31/commits/master';
 	var urlChrome = 'https://chrome.google.com/webstore/detail/kyberia-v31-features/icjomacohfdgbijhlhkhfomoeolncgia';
+
+	function chromeShouldntUseUserscript() {
+		var div = $('<div>');
+		div.css({'text-align': 'center', 'font-weight': 'bold', 'color': 'red', 'padding-top': '40px'});
+		var msgChrome = 'Seems like you\'re using chrome, install chrome extension from ';
+		var aChrome = $('<a target="_blank">').attr('href', urlChrome).text('here');
+		div.append( $('<div>').text(msgChrome).append(aChrome) );
+
+		div.prependTo('body');
+	}
 
 	function message() {
 		var last  = lastVersion();
@@ -47,14 +57,6 @@ function AutoUpdater()
 
 		div.html('Kyberia extension - new version is out '+last+' (you have '+curr+')<br>');
 		div.append(install).append(space).append(later).append(space.clone()).append(changelog);
-
-		if (0 && window.chrome) {
-			var msgChrome = 'If you are using chrome, ignore message above, and ';
-			var aChrome = $('<a target="_blank">').attr('href', urlChrome).text('install from here');
-			div.append('<br>');
-			div.append('<br>');
-			div.append( $('<div>').text(msgChrome).append(aChrome) );
-		}
 
 		return div;
 	}
@@ -80,11 +82,26 @@ function AutoUpdater()
 	}
 	function lastVersion() { return localStorage['KYBERIA_V31_USERSCRIPT_LAST_VERSION']; }
 	function currVersion() { return window.KYBERIA_V31_USERSCRIPT_VERSION; }
-	function isNewVersion() { return 1 || lastVersion() != currVersion(); }
-
-
-
+	function isNewVersion() {
+		var last = lastVersion();
+		var curr = currVersion();
+		if (!last || !curr) return false;
+		return last != curr;
+	}
 }
+
+AutoUpdater.version = function() {
+	if (window.KYBERIA_V31_USERSCRIPT_VERSION)
+		return window.KYBERIA_V31_USERSCRIPT_VERSION;
+	if (window.chrome)
+		return window.chrome.runtime.getManifest().version;
+	return '???';
+}
+AutoUpdater.is_userscript = function() {
+	return !!window.KYBERIA_V31_USERSCRIPT_VERSION;
+}
+
+
 
 g_features.push( new AutoUpdater() );
 
