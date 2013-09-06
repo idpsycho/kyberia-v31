@@ -16,8 +16,9 @@ function onReady()
 	if (analyticsOnceADay())
 		sendAnalyticsInfo( arrEnabledFeatures );
 
-	// not necessary, but very useful for debugging..
-	$('<script src="http://code.jquery.com/jquery-1.10.1.min.js">').appendTo('body');
+	// not necessary, but very useful for debugging.. breaks stuff in firefox, so just chrome..
+	if (window.chrome)
+		$('<script src="http://code.jquery.com/jquery-1.10.1.min.js">').appendTo('body');
 }
 
 function analyticsOnceADay()

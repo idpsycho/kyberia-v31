@@ -10,6 +10,9 @@ function AutoUpdater()
 {
 	this.name = 'AutoUpdater';
 	this.onLoad = function() {
+		return;
+
+/*
 		if (!window.KYBERIA_V31_USERSCRIPT_VERSION) return;
 
 		if (window.chrome)
@@ -19,8 +22,9 @@ function AutoUpdater()
 
 		if (isNewVersion() && shouldRemind())
 			message().prependTo('body');
+*/
 	}
-
+/*
 	var urlBase = 'http://p.brm.sk/kyberia-v31-userscript';
 	//var urlBase = 'http://l/kyberia-v31-userscript';
 	var urlVersion = urlBase+'/version.js';
@@ -89,12 +93,15 @@ function AutoUpdater()
 		if (!last || !curr) return false;
 		return last != curr;
 	}
+	*/
 }
 
+/*
 AutoUpdater.checkForUpdateNow = function() {
 	localStorage['KYBERIA_V31_USERSCRIPT_LAST_VERSION_CHECK'] = 0;
 	(new AutoUpdater()).onLoad();
 };
+*/
 
 AutoUpdater.version = function() {
 	if (window.KYBERIA_V31_USERSCRIPT_VERSION)
@@ -106,7 +113,6 @@ AutoUpdater.version = function() {
 AutoUpdater.is_userscript = function() {
 	return !!window.KYBERIA_V31_USERSCRIPT_VERSION;
 }
-
 
 
 g_features.push( new AutoUpdater() );

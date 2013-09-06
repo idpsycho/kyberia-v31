@@ -1,4 +1,5 @@
 
+var $ = jQuery.noConflict();
 
 var g_features = [];	// all extensions are instantiated into this list
 

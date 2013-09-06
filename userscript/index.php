@@ -16,6 +16,7 @@
 			mkdir('../kyberia-v31-userscript');
 
 		$fname_USER_JS = '../kyberia-v31-userscript/kyberia-v31.user.js';
+		$fname_META_JS = '../kyberia-v31-userscript/kyberia-v31.meta.js';
 		$fname_VERSION_JS = '../kyberia-v31-userscript/version.js';
 
 		// save version number to file latest_version
@@ -54,6 +55,7 @@
 
 		$out = $header ."\n\n". $content;
 		file_put_contents($fname_USER_JS, $out);
+		//file_put_contents($fname_META_JS, $header); // not needed, userscripts.org generates it by itself
 
 		echo "combined just now: $VERSION";
 	}
@@ -62,6 +64,9 @@
 <br>
 <br>
 <!--<a href="<?=$versionUrl?>"><?=$versionUrl?></a>-->
+<br>
+<br>
+<a href="../kyberia-v31-userscript/kyberia-v31.user.js">kyberia-v31.user.js</a>
 <br>
 <br>
 <form method="POST">

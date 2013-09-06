@@ -1,10 +1,13 @@
 // ==UserScript==
 // @name		Kyberia-v31
+// @description	Makes kyberia.sk more fun
 // @version		VERSION
 // @match		http://kyberia.sk/*
 // @match		https://kyberia.sk/*
 // @include		http://kyberia.sk*
 // @include		https://kyberia.sk*
 // @run-at		document-start
+// @downloadURL	https://userscripts.org/scripts/source/177329.user.js
+// @updateURL	https://userscripts.org/scripts/source/177329.meta.js
 // @icon		http://p.brm.sk/kyberia-v31-userscript/icon.png
 // ==/UserScript==
