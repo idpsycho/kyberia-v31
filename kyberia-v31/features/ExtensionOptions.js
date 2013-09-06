@@ -51,8 +51,8 @@ function ExtensionOptions()
 		var header_template = getHeaderTemplate();
 		var bug = '';
 		bug += 'bug report, v'+v+u+', '+browser+'\n';
-		bug += 'header: '+header_template+'\n';
-		bug += 'info: ';
+		bug += 'header '+header_template+'\n';
+		bug += '\n';
 		var ta = options.find('.bug-report textarea').css({ width: '100%' });
 		ta.val(bug).focus();
 

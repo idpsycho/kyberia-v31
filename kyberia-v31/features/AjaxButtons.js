@@ -52,16 +52,19 @@ function AjaxButtons()
 
 	function ajaxifyButtons()
 	{
-		//var btns = fooks().add(Ks()).add(books()).add(unbooks());
-		//btns.css('cursor', 'pointer');
-		//btns.mouseenter(function() { $(this).stop().animate({opacity:0.5}, 100); })
-		//btns.mouseleave(function() { $(this).stop().animate({opacity:1}, 100); })
-
 		Ks().on('click', function() {
 			var btn = $(this);
-			$.post(actionOf(btn), {'event':'K'}, function() {
-				btn.attr('disabled', 'disabled').hide();
-				btn.css({color: 'red', 'font-weight':'bold', border:'none'}).fadeIn();
+			var action = actionOf(btn);
+			var data = {event: 'K'};
+			var node_chosen = nodeChosenOf(btn);
+			if (node_chosen)
+				data.node_chosen = node_chosen;
+
+			btn.hide();
+			$.post(action, data, function() {
+				if (!node_chosen)
+					btn.css({color: 'red', 'font-weight':'bold', border:'none'})
+				btn.fadeIn();
 			});
 			return false;
 		});
@@ -96,26 +99,31 @@ function AjaxButtons()
 			t.siblings('a:contains(skip)').hide();
 
 			var p = t.parent('td');
-			p.add(t).css({'cursor':'s-resize'});
+			p.add(t).attr('title', 'skip').css({'cursor':'s-resize'});
 			p.click(function() { t.trigger('click'); });
 		});
 
 		skips().click(function() {
-			scrollToHref( $(this).attr('href'), -10 );
+			var curr = $(this).parents('.bordered:eq(0)');
+			var next = getElemByHref( $(this).attr('href') );
+			animScrollTop_ToNext( curr, next );
 			return false;
 		});
 	}
 
 
 	function actionOf(btn) { return btn.parents('form').eq(0).attr('action'); }
-	function scrollToHref(href, off)
-	{
-		if (!href) return;
-		if (href[0] == '#') href = href.substr(1);
+	function nodeChosenOf(btn) {
+		var form = btn.parents('form:eq(0)');
+		var choser = form.find('input[name="node_chosen[]"]');
+		if (!choser.length) return;
 
-		if (!off) off = 0;
-		var pos = $('[name="'+href+'"]').offset().top + off;
-		$('html, body').stop().animate({scrollTop: pos}, 500);
+		var node_chosen = [];
+		choser.filter(':checked').each(function() {
+			node_chosen.push( $(this).val() );
+		});
+
+		return node_chosen;
 	}
 
 	function fooks() { return $('input[type=submit][value=fook]'); }

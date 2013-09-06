@@ -12,6 +12,7 @@ var g_defaultFeatures = {
 	'InplaceEditing': 1,
 	'QuickReply': 1,
 	'ShowKGivers': 1,
+	'FeatureMix': 1,
 };
 
 var g_defaultFeatureValues = {
@@ -83,6 +84,49 @@ function userId() {	// TODO: could be cached, and could be in some utils.js or k
 	var m = href.match(/\/id\/([0-9]+)/);
 	if (!m || m.length != 2) return;
 	return m[1];
+}
+
+
+function scrollToHref(href, off)
+{
+	if (!href) return;
+	if (href[0] == '#') href = href.substr(1);
+	var elem = $('[name="'+href+'"]');
+
+	scrollToElem(elem, off);
+}
+function getElemByHref(href)
+{
+	if (!href) return;
+	if (href[0] == '#')
+		href = href.substr(1);
+	return $('[name="'+href+'"]');
+}
+
+function scrollToElem($node, off)
+{
+	if (!$node || !$node.length) return;
+	if (!off) off = 0;
+
+	var pos = $node.offset().top + off;
+	animScrollTop(pos);
+}
+function animScrollTop(pos, dt)
+{
+	if (typeof dt == 'undefined') dt = 500;
+	$('html, body').stop().animate({scrollTop: pos}, dt);
+}
+
+function animScrollTop_ToNext(curr, next, dt)
+{
+	if (!curr.offset() || !next.offset())
+		return;
+
+	var posNow = curr.offset().top;
+	var scrNow = $('body').scrollTop();
+	var posWant = next.offset().top;
+	var scrWant = posWant + (scrNow-posNow);
+	animScrollTop( scrWant, dt );
 }
 
 function moveCaretToEnd(el) {

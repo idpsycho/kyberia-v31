@@ -5,7 +5,6 @@ function QuickReply()
 	this.onLoad = function()
 	{
 		$('<style>').text('div.node_body { padding-bottom: 18px; }').appendTo('body');
-		$('<style>').text('div.node_content { display: block; }').appendTo('body');
 
 		$('.node_content').each(function()
 		{
