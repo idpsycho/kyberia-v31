@@ -52,7 +52,9 @@ function ExtensionOptions()
 		var bug = '';
 		bug += 'bug report, v'+v+u+', '+browser+'\n';
 		bug += 'header '+header_template+'\n';
+		bug += 'link kde to robi: \n';
 		bug += '\n';
+		bug += 'popis: ';
 		var ta = options.find('.bug-report textarea').css({ width: '100%' });
 		ta.val(bug).focus();
 

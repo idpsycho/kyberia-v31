@@ -1,7 +1,7 @@
 
 function ShowKGivers()
 {
-	var waitBeforeLoad = 1000;
+	var waitBeforeLoad = 500;
 
 	this.name = 'ShowKGivers';
 	this.onLoad = function() {
@@ -10,25 +10,23 @@ function ShowKGivers()
 		$('td > span.most_important', 'table.bordered').each(function() {
 			var k = $(this);
 			var bordered = k.parents('table.bordered:eq(0)');
-			var id = bordered.find('form:eq(0)').attr('action');
-			if (id) id = id.match(/[0-9]+$/);
+			var id = idFromAction( bordered.find('form:eq(0)') );
 			if (!id) return;
+
 			k.addClass('K_value').data('node_id', id);
 		});
 
 		$('.node_header_k').each(function() {
 			var k = $(this);
 			var content = k.parents('.node_content:eq(0)');
-			var id = content.find('a.node_header_title_nodename').attr('href');
-			if (id) id = id.match(/[0-9]+$/);
+			var id = idFromHref( content.find('a.node_header_title_nodename') );
 			if (!id) return;
 			k.addClass('K_value').data('node_id', id);
 		});
 
 		$('.node_info2 > .most_important:eq(0)').each(function() {
 			var k = $(this);
-			var id = $('#sidebar_node a:eq(0)').attr('href');
-			if (id) id = id.match(/[0-9]+$/);
+			var id = idFromHref( $('#sidebar_node a:eq(0)') );
 			if (!id) return;
 			k.addClass('K_value').data('node_id', id);
 		});

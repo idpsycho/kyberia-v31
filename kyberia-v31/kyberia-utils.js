@@ -1,4 +1,5 @@
 
+
 var g_features = [];	// all extensions are instantiated into this list
 
 var g_defaultFeatures = {
@@ -86,6 +87,24 @@ function userId() {	// TODO: could be cached, and could be in some utils.js or k
 	return m[1];
 }
 
+function idFromAction(action)
+{
+	if (action instanceof jQuery) action = action.attr('action');
+	if (!action) return;
+
+	var m = action.match(/\/id\/([0-9]+)/);
+	if (!m || !m[1]) return;
+	return m[1];
+}
+function idFromHref(href)
+{
+	if (href instanceof jQuery) href = href.attr('href');
+	if (!href) return;
+
+	var m = href.match(/\/id\/([0-9]+)/);
+	if (!m || !m[1]) return;
+	return m[1];
+}
 
 function scrollToHref(href, off)
 {

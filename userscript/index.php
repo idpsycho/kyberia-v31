@@ -47,6 +47,8 @@
 		FileCombiner::checkedCombine('kyberia-v31-headerless.js', $arrMerge, 'ignore check');
 
 		$content = file_get_contents('kyberia-v31-headerless.js');
+
+		$content = "(function() {\n\n$content\n\n})();";
 		$header = file_get_contents('header.txt');
 		$header = str_replace('VERSION', $VERSION, $header);
 
