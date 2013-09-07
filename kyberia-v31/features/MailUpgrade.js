@@ -12,7 +12,7 @@ function MailUpgrade()
 function MailUpgrade_OLD_BORDEL()
 {
 
-	var in_mail_24 = (window.location.pathname == "/id/24/");
+	var in_mail_24 = window.location.pathname.match(/^\/id\/24\/?$/);
 
 	if (in_mail_24) ready();
 

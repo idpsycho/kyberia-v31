@@ -4,11 +4,15 @@ function sendAnalyticsInfo(arrEnabledFeatures) {
 
 	var u = AutoUpdater.is_userscript();
 	var v = AutoUpdater.version();
-	var features = arrEnabledFeatures.join(',');
+	var features = arrEnabledFeatures.join(', ');
+	var header = localStorage['KYBERIA_V31_HEADER_TEMPLATE'];
+	if (header)
+		features = 'header:'+header+', '+features;
 
-	// /kyberia-v31/1.23/ feature1,feature2,feature3
-	// /kyberia-v31/1.23/u/ features..
-	var path = '/kyberia-v31/'+v+'/'+(u?'u/':'')+features;
+	v += u?'u':'';
+
+	// /kyberia-v31/1.23u/header:1235673, feature2, feature3..
+	var path = '/kyberia-v31/'+v+'/'+features;
 
 	gaTrack('UA-31675559-1', 'kyberia-v31', path);
 }

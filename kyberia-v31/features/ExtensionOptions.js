@@ -30,6 +30,8 @@ function ExtensionOptions()
 	}
 	function addExtensionOptions()
 	{
+		localStorage['KYBERIA_V31_HEADER_TEMPLATE'] = getHeaderTemplate();	// remember
+
 		getOptionsHtml(function(html) {
 			var options = $(html).insertBefore('#configure');
 
