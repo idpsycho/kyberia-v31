@@ -59,7 +59,7 @@ function CompactMode()
 			.quickK input				{ margin: 0; }\
 		";
 		$('<style>').text(style).appendTo('body');
-		$('.node_header, .node_body, .node_content').addClass('compact-mode');
+		$('.node_header, .node_body, div.node_content').addClass('compact-mode');
 		$('.node_avatar, .node_avatar, .lvl, .level1').addClass('compact-mode');
 
 		// remove useless elements

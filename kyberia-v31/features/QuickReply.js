@@ -6,7 +6,7 @@ function QuickReply()
 	{
 		$('<style>').text('div.node_body { padding-bottom: 18px; }').appendTo('body');
 
-		$('.node_content').each(function()
+		$('div.node_content').each(function()
 		{
 			var t = $(this);
 			var add = $('<button class="btn_QuickReply">').text('reply');
