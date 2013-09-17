@@ -59,6 +59,7 @@ function QuickReply()
 		});
 
 		cancel.add(add).appendTo(form).css({float: 'right'});
+		form.append( $('.add_k_cmnt:eq(0)').clone().append('<span> K</span>') );
 
 		form.hide().insertAfter(content).slideDown();
 		ta.focus();
@@ -69,7 +70,7 @@ function QuickReply()
 	{
 		var data = {node_content: ta.val(), node_parent: id, template_id: 4, event: 'add'};
 		ta.prop('disabled', true);
-		$.post('', data, function(resp) {
+		$.post('/id/'+id, data, function(resp) {
 			var html = ta.val();
 			var wrap = ta.parent();
 			wrap.removeClass('QuickReply').children().remove();

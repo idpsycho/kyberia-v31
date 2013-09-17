@@ -28,7 +28,6 @@ open configure your user node, i.e. "setup"
 #### nah
 - show online/offline status everywhere
 - fook fix - fooked nodes are not hidden if their non-parent ancestor is fooked
-- in-place editing
 - realtime preview
 - sort nodes by alphabet ignoring tags
 - NSFW mode, add buttons for flagging, and autohide images in flagged nodes
