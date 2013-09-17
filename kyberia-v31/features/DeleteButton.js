@@ -9,24 +9,35 @@ function DeleteButton()
 
 			var btn = $(this);
 			var nodes = $('[name="node_chosen[]"]:checked');
+			var arrIds = [];
+
 			if (nodes.length)
 			{
-				var arrIds = [];
 				nodes.each(function() {
 					arrIds.push( $(this).val() );
-				});
-				var data = {new_parent:123456, 'event':'set_parent', 'node_chosen':arrIds};
-				$.post(actionOf(btn), data, function() {
-					nodes.each(function() {
-						$(this).parents('.lvl').eq(0).slideUp();
-					});
 				});
 			}
 			else
 			{
-				$('[name=new_parent]').val(123456);
-				$('[value=set_parent]').click();
+				var id = idFromHref(window.location.href);
+				if (!id) return;
+				arrIds.push( id );
 			}
+
+
+			var data = {new_parent:123456, 'event':'set_parent', 'node_chosen':arrIds};
+			$.post(actionOf(btn), data, function()
+			{
+				if (nodes.length) {
+					nodes.each(function() {
+						$(this).parents('.lvl').eq(0).slideUp();
+					});
+				}
+				else {
+					window.location = window.location;
+				}
+			});
+
 			return false;
 		});
 	}
