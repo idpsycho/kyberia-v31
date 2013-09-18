@@ -24,17 +24,21 @@ function FeatureMix()
 	}
 
 	function custom_pagination_offset() {
-		$('input[name="get_children_offset"]').attr('type', 'text');
+		$('.movement input[name="get_children_offset"]').attr('type', 'text').css('width', '40px');
 	}
 
 	function hilight_low_k() {
-		var e = $('.add_k_cmnt');
-		var s = $.trim(e.text());
-		if (!s) return;
-		s = s.match(/[0-9]+$/)[0];
-		var numK = parseInt(s);
-		if (numK <= 3)
-			e.addClass('most_important');
+		var elems = $('.add_k_cmnt');
+		elems = elems.add('.module_k_wallet .current_user_k');
+		elems.each(function() {
+			var e = $(this);
+			var s = $.trim(e.text());
+			if (!s) return;
+			s = s.match(/[0-9]+$/)[0];
+			var numK = parseInt(s);
+			if (numK <= 3)
+				e.addClass('most_important');
+		});
 	}
 }
 
