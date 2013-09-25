@@ -28,7 +28,7 @@ function TagUsers()
 	}
 
 	function tag_users() {
-		var filter = getFeatureValue(this.name);
+		var filter = getFeatureValue('TagUsers');
 		if (!filter) return;
 		var names = filter.split(/[ \t\n\r]/);
 		for (var i=0; i < names.length; i++)
