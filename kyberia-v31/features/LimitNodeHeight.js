@@ -52,13 +52,13 @@ function LimitNodeHeight()
 	////////////////////////////////////////////////////////////
 
 	function nodes() {
-		var nodes = $('.node_body');
-		if (!nodes.length)
+		var nodes = $('.node_body, .k_new_node_body');
+		/*if (!nodes.length)
 		{
 			$('table.bordered>tbody').each(function() {
-				nodes = nodes.add( $(this).find('tr:eq(1)>td:eq(0)') );
+				nodes = nodes.add( $(this).find('tr:eq(1)>td:eq(0)[valign=top]') );
 			});
-		}
+		}*/
 		return nodes;
 	}
 
