@@ -1,6 +1,6 @@
 {
 	"name": "Kyberia v3.1 features",
-	"version": "1.42",
+	"version": "1.43",
 	"description": "Adds features that make kyberia.sk more fun.",
 
 	"permissions": [ "storage" ],

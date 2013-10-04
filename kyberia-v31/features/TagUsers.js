@@ -53,7 +53,8 @@ function TagUsers()
 		}
 	}
 	function usernames() {
-		var a = $('a.node_login').add('tr#sidebar_owner a');
+		var a = $();
+		a = a.add('a.node_login, a.node_creator, tr#sidebar_owner a');
 
 		var inK = $('a:eq(2)', 'table.bordered td.header');
 		a = a.add(inK);
