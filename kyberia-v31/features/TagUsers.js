@@ -44,7 +44,8 @@ function TagUsers()
 				if (!href) return;
 
 				var re = new RegExp('\/id\/'+RegExp.escape(id)+'$');
-				if (href.match(re)) {
+				var re2 = new RegExp("'"+RegExp.escape(id)+"'");
+				if (href.match(re) || href.match(re2)) {
 					var changed_nick = $(this).text();
 					$(this).html( user ).append( $('<sup>').text(changed_nick) );
 				}
@@ -53,8 +54,14 @@ function TagUsers()
 	}
 	function usernames() {
 		var a = $('a.node_login').add('tr#sidebar_owner a');
+
 		var inK = $('a:eq(2)', 'table.bordered td.header');
-		return a.add(inK);
+		a = a.add(inK);
+
+		var inMail = $('a:eq(0), a:eq(1)', '#formular .message .header');
+		a = a.add(inMail);
+
+		return a;
 	}
 }
 
