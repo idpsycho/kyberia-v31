@@ -9,6 +9,19 @@ function FeatureMix()
 		custom_pagination_offset();
 
 		hilight_low_k();
+
+		remember_login_type();
+		function remember_login_type()
+		{
+			$('#login_type_id, #login_type_name').change(function() {
+				if ($(this).prop('checked'))
+					localStorage['KYBERIA_V31_last-login-type'] = $(this).attr('id');
+			});
+
+			var login_type = localStorage['KYBERIA_V31_last-login-type'];
+			if (login_type=='login_type_id' || login_type=='login_type_name')
+				$('#'+login_type).prop('checked', true);
+		}
 	}
 	////////////////////////////////////////////////////////////
 
