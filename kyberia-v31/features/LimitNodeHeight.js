@@ -52,7 +52,7 @@ function LimitNodeHeight()
 	////////////////////////////////////////////////////////////
 
 	function nodes() {
-		var nodes = $('.node_body, .k_new_node_body');
+		var nodes = $('.node_body, .k_new_node_body, .k_node_content');
 		/*if (!nodes.length)
 		{
 			$('table.bordered>tbody').each(function() {

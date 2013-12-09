@@ -2,6 +2,8 @@
 
 function onReady()
 {
+	var arrTimes = [];
+
 	var arrEnabledFeatures = [];
 	for (var i=0; i < g_features.length; i++)
 	{
@@ -10,7 +12,20 @@ function onReady()
 
 		arrEnabledFeatures.push( feature.name );	// for analytics
 
+		var t = time();
 		feature.onLoad();
+
+		arrTimes.push({ dt:(time() - t), name:feature.name });
+	}
+
+	if (localStorage['kyberia_v31_show_performance'])
+	{
+		arrTimes.sort(function(a,b) { return b.dt-a.dt; });
+		for (var i=0; i < arrTimes.length; i++)
+		{
+			var x = arrTimes[i];
+			console.log(x.dt+' ms\t'+x.name);
+		}
 	}
 
 	if (analyticsOnceADay())

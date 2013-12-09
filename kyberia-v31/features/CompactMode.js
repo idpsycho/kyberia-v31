@@ -53,7 +53,7 @@ function CompactMode()
 			.compact-mode.level1		{ border-bottom: none; margin-top: 20px; }\
 			.compact-mode.hidden_header	{ position: absolute; top: -2px; left: 110px; font-size: 10px; \
 											color: #555; z-index: 1; }\
-			.node_header_title			{ position: absolute; right: 30px; top: -2px; }\
+			.node_header_title			{ position: absolute; right: 70px; top: -2px; }\
 			.node_header_title_nodename { font-size: 10px; }\
 			.quickK						{ position: absolute; right: -1px; top: 0; }\
 			.quickK input				{ margin: 0; }\

@@ -4,6 +4,10 @@ function FeatureMix()
 	this.name = 'FeatureMix';
 	this.onLoad = function()
 	{
+		// localStorage['v31_amie_mirrorize'] = 1
+		if (localStorage['v31_amie_mirrorize'])
+			mirrorize();
+
 		fix_imgur();
 
 		custom_pagination_offset();
@@ -11,19 +15,17 @@ function FeatureMix()
 		hilight_low_k();
 
 		remember_login_type();
-		function remember_login_type()
-		{
-			$('#login_type_id, #login_type_name').change(function() {
-				if ($(this).prop('checked'))
-					localStorage['KYBERIA_V31_last-login-type'] = $(this).attr('id');
-			});
 
-			var login_type = localStorage['KYBERIA_V31_last-login-type'];
-			if (login_type=='login_type_id' || login_type=='login_type_name')
-				$('#'+login_type).prop('checked', true);
-		}
+		remove_autoplay();
 	}
 	////////////////////////////////////////////////////////////
+
+	function mirrorize() {
+		$('body').css({
+			'-webkit-transform': 'scale(-1, 1)',	// Chrome, Safari 3.1+
+			'transform': 'scale(-1, 1)',			// Firefox 16+, IE 10+, Opera 12.10+
+		});
+	}
 
 	function fix_imgur() {
 		$('body').on('keyup', 'textarea:focus', function(e) {
@@ -37,9 +39,13 @@ function FeatureMix()
 	}
 
 	function custom_pagination_offset() {
-		$('.movement input[name="get_children_offset"]').attr('type', 'text').css('width', '40px');
+		$('input[name="get_children_offset"]').attr('type', 'text').css('width', '40px');
 	}
 
+	function remove_autoplay()
+	{
+		$('object[data*="autoplay=1"]').remove();
+	}
 	function hilight_low_k() {
 		var elems = $('.add_k_cmnt');
 		elems = elems.add('.module_k_wallet .current_user_k');
@@ -52,6 +58,17 @@ function FeatureMix()
 			if (numK <= 3)
 				e.addClass('most_important');
 		});
+	}
+
+	function remember_login_type() {
+		$('#login_type_id, #login_type_name').change(function() {
+			if ($(this).prop('checked'))
+				localStorage['KYBERIA_V31_last-login-type'] = $(this).attr('id');
+		});
+
+		var login_type = localStorage['KYBERIA_V31_last-login-type'];
+		if (login_type=='login_type_id' || login_type=='login_type_name')
+			$('#'+login_type).prop('checked', true);
 	}
 }
 

@@ -65,6 +65,8 @@ function ExtensionOptions()
 	}
 	function applyOptionsJavascript()
 	{
+		var v = AutoUpdater.version();
+		$('#kyberia_v31 .v31_version').text('v'+v);
 		var features = $('#kyberia_v31 .ls');
 		for (var i=0; i < features.length; i++)
 		{

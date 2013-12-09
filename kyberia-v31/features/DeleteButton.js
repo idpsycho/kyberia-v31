@@ -30,7 +30,7 @@ function DeleteButton()
 			{
 				if (nodes.length) {
 					nodes.each(function() {
-						$(this).parents('.lvl').eq(0).slideUp();
+						$(this).prop('checked', false).parents('.lvl').eq(0).slideUp();
 					});
 				}
 				else {

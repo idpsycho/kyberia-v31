@@ -10,7 +10,13 @@ function QuickReply()
 		{
 			var t = $(this);
 			var add = $('<button class="btn_QuickReply">').text('reply');
-			add.css({position: 'absolute', bottom: '1px', right: '1px', margin: 0});
+			add.css({
+				'position': 'absolute',
+				'top': '2px',
+				'right': '24px',
+				'margin': '0',
+				'vertical-align': 'middle'
+			});
 			add.appendTo(t);
 
 			add.click(function() {
