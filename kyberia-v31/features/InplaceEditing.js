@@ -14,8 +14,8 @@ function InplaceEditing()
 			var buttons = $('<div class="InplaceEdit">').appendTo(content);
 			buttons.css({position: 'absolute', bottom: '1px', right: '50px'})
 			var edit = $('<button onclick="return false">').text('edit');
-			var save = $('<button>').text('save').hide();
-			var cancel = $('<a href="#">').html('&nbsp; cancel').hide();
+			var save = $('<button tabindex="2">').text('save').hide();
+			var cancel = $('<a href="#" tabindex="3">').html('&nbsp; cancel').hide();
 
 			buttons.append(edit).append(save).append(cancel);
 
@@ -43,7 +43,7 @@ function InplaceEditing()
 
 	function editNodeBody(body)
 	{
-		var ta = $('<textarea>');
+		var ta = $('<textarea tabindex="1">');
 		var w = body.width();
 		var h = body.height() * 1.1 + 40;
 		ta.add(body).width(w).height(h);

@@ -19,15 +19,15 @@ function Hiraganiser()
 		var map = {
 			'shi':	'し',	'sha':	'しゃ',	'shu':	'しゅ',	'sho':	'しょ',
 			'chi':	'ち',	'cha':	'ちゃ',	'chu':	'ちゅ',	'cho':	'ちょ',
-			'kya':	'きゃ',	'kyu':	'きゅ',	'kyo':	'きょ',
-			'nya':	'にゃ',	'nyu':	'にゅ',	'nyo':	'にょ',
-			'hya':	'ひゃ',	'hyu':	'ひゅ',	'hyo':	'ひょ',
-			'mya':	'みゃ',	'myu':	'みゅ',	'myo':	'みょ',
-			'rya':	'りゃ',	'ryu':	'りゅ',	'ryo':	'りょ',
-			'gya':	'ぎゃ',	'gyu':	'ぎゅ',	'gyo':	'ぎょ',
-			'bya':	'びゃ',	'byu':	'びゅ',	'byo':	'びょ',
-			'pya':	'ぴゃ',	'pyu':	'ぴゅ',	'pyo':	'ぴょ',
-			'tsu':	'つ',
+							'kya':	'きゃ',	'kyu':	'きゅ',	'kyo':	'きょ',
+							'nya':	'にゃ',	'nyu':	'にゅ',	'nyo':	'にょ',
+							'hya':	'ひゃ',	'hyu':	'ひゅ',	'hyo':	'ひょ',
+							'mya':	'みゃ',	'myu':	'みゅ',	'myo':	'みょ',
+							'rya':	'りゃ',	'ryu':	'りゅ',	'ryo':	'りょ',
+							'gya':	'ぎゃ',	'gyu':	'ぎゅ',	'gyo':	'ぎょ',
+							'bya':	'びゃ',	'byu':	'びゅ',	'byo':	'びょ',
+							'pya':	'ぴゃ',	'pyu':	'ぴゅ',	'pyo':	'ぴょ',
+											'tsu':	'つ',
 
 			'ka':	'か',	'ki':	'き',	'ku':	'く',		'ke':	'け',	'ko':	'こ',
 			'na':	'な',	'ni':	'に',	'nu':	'ぬ',	'ne':	'ね',	'no':	'の',
@@ -49,7 +49,6 @@ function Hiraganiser()
 			'a':	'あ',	'i':	'い',	'u':	'う',	'e':	'え',	'o':	'お',
 
 			// FAKES
-
 			// tsu
 			'c':	'つ',
 			// fu
@@ -74,7 +73,24 @@ function Hiraganiser()
 			'd':	'ど',
 		};
 
-		alphabetConversionAllHtml(map, 'remove diacritics and y');//, 0.5);
+		function copyAllKeysByValue(mapFrom, mapTo, val) {
+			for (var k in mapFrom)
+				if (mapFrom.hasOwnProperty(k) && mapFrom[k]===val)
+					mapTo[k] = val;
+		}
+		var chars = getFeatureValue('Hiraganiser');
+		chars = $.trim(chars);
+		chars = chars.split(' ');
+		if (chars.length)	// only those characters will be used..
+		{
+			var mapSubset = {};
+			for (var i=0; i < chars.length; i++)
+				copyAllKeysByValue(map, mapSubset, chars[i]);
+
+			map = mapSubset;
+		}
+
+		alphabetConversionAllHtml(map, 'remove diacritics and y');
 	}
 }
 

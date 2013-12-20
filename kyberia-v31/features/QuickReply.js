@@ -47,7 +47,7 @@ function QuickReply()
 		if (id) id = id[0];
 		if (!id) return;
 
-		var ta = $('<textarea name="node_content">').appendTo(form);
+		var ta = $('<textarea tabindex="1" name="node_content">').appendTo(form);
 		ta.css({width: '100%', border: '1px solid #6dae42', height: '50px', 'margin-bottom': '2px'});
 		ta.keydown(function(e) {
 			if (e.ctrlKey && e.which==13) {
@@ -56,8 +56,8 @@ function QuickReply()
 			}
 		});
 
-		var cancel = $('<button>').text('cancel');
-		var add = $('<button>').text('add');
+		var cancel = $('<button tabindex="3">').text('cancel');
+		var add = $('<button tabindex="2">').text('add');
 
 		add.click(function() {
 			sendForm(ta, id, body);
@@ -74,6 +74,9 @@ function QuickReply()
 	}
 	function sendForm(ta, id, body)
 	{
+		if (ta.data('sending')) return;
+		ta.data('sending', 'yep');
+
 		var data = {node_content: ta.val(), node_parent: id, template_id: 4, event: 'add'};
 		ta.prop('disabled', true);
 		$.post('/id/'+id, data, function(resp) {

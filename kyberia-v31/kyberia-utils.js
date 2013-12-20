@@ -244,7 +244,7 @@ function ago(t)
 
 
 ////////////////////////////////////////////////////////
-function alphabetConversionAllHtml(map, bRemoveDiacriticsAndY, chance)
+function alphabetConversionAllHtml(map, bRemoveDiacriticsAndY)
 {
 	var arrFrom = [];
 	for (var k in map)
@@ -268,15 +268,19 @@ function alphabetConversionAllHtml(map, bRemoveDiacriticsAndY, chance)
 			if (bRemoveDiacriticsAndY)
 				aft = removeDiacritics(aft).replace(/y/gi, 'i');
 
+			var lastPos = 0;
 			var title = '';
-			aft = aft.toLowerCase().replace(fromRE, function (m) {
-				if (chance && Math.random() > chance)
-					return m;
+			aft = aft.toLowerCase();
+			aft = aft.replace(fromRE, function (m, pos)
+			{
 				if (!map[m]) return m;
 
+				title += aft.substr(lastPos, pos-lastPos)+'\n';
+				lastPos = pos+m.length;
 				title += m+'\t'+map[m]+'\n';
 				return map[m];
 			});
+			title += aft.substr(lastPos);
 			aft = aft.copyCasingFrom(bef);
 
 			TEXT_NODE.textContent = aft;
