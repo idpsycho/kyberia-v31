@@ -24,7 +24,7 @@ function onReady()
 		for (var i=0; i < arrTimes.length; i++)
 		{
 			var x = arrTimes[i];
-			console.log(x.dt+' ms\t'+x.name);
+			console.log(x.dt+' s\t'+x.name);
 		}
 	}
 
@@ -33,14 +33,14 @@ function onReady()
 
 	// not necessary, but very useful for debugging.. breaks stuff in firefox, so just chrome..
 	if (window.chrome)
-		$('<script src="http://code.jquery.com/jquery-1.10.1.min.js">').appendTo('body');
+		$('<script src="http://code.jquery.com/jquery-2.0.3.min.js">').appendTo('body');
 }
 
 function analyticsOnceADay()
 {
 	var lsKey = '_kyberia_v31_last_analytics';
 	var last = localStorage[lsKey];
-	if (last && ago(last) < 24*60*60*1000)
+	if (last && ago(last) < 24*60*60)
 		return false;
 
 	localStorage[lsKey] = time();

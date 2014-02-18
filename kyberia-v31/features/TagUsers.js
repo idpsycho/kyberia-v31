@@ -47,7 +47,7 @@ function TagUsers()
 				var re2 = new RegExp("'"+RegExp.escape(id)+"'");
 				if (href.match(re) || href.match(re2)) {
 					var changed_nick = $(this).text();
-					$(this).html( user ).append( $('<sup>').text(changed_nick) );
+					$(this).html( user ).append( $('<sup class="v31_original_name">').text(changed_nick) );
 				}
 			});
 		}

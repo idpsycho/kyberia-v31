@@ -203,8 +203,16 @@ function getNicks(msg)
 	var a = msg.find('.header a:not([title])');
 	var id1 = extractHrefId( a.eq(0) );
 	var id2 = extractHrefId( a.eq(1) );
-	var nick1 = a.eq(0).text();
-	var nick2 = a.eq(1).text();
+	var $nick1 = a.eq(0);
+	var $nick2 = a.eq(1);
+	var nick1 = $nick1.text();
+	var nick2 = $nick2.text();
+	$nick1 = $nick1.find('sup.v31_original_name');
+	$nick2 = $nick2.find('sup.v31_original_name');
+
+	if ($nick1.length) nick1 = $nick1.text();
+	if ($nick2.length) nick2 = $nick2.text();
+
 	return [id1, id2, nick1, nick2];
 }
 

@@ -1,17 +1,17 @@
 {
 	"name": "Kyberia v3.1 features",
-	"version": "1.60",
+	"version": "1.64",
 	"description": "Adds features that make kyberia.sk more fun.",
 
 	"permissions": [ "storage" ],
-	"web_accessible_resources": ["icon.png", "options.html", "jquery-1.10.2.min.map"],
+	"web_accessible_resources": ["icon.png", "options.html", "jquery-1.10.2.min.map", "jquery-2.0.3.min.map"],
 
 	"icons": {
 		"128": "icon.png"
 	},
 	"content_scripts": [ {
 		"js": [
-			"jquery.js",
+			"jquery2.js",
 			"analytics.js",
 			"kyberia-utils.js",
 			"kyberia-v31.js",
@@ -19,6 +19,8 @@
 			"features/AutoUpdater.js",
 			"features/ExtensionOptions.js",
 
+			"features/ChatBox.js",
+			"features/Jargoniser.js",
 			"features/FeatureMix.js",
 			"features/AjaxButtons.js",
 			"features/ShowKGivers.js",

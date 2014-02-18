@@ -69,7 +69,7 @@ function AutoUpdater()
 		var last_remind = localStorage['KYBERIA_V31_USERSCRIPT_LAST_REMIND'];
 		if (!last_remind) return true;
 
-		var aDay = 24*60*60*1000;
+		var aDay = 24*60*60;
 		return ago(last_remind) > aDay;
 	}
 
@@ -77,7 +77,7 @@ function AutoUpdater()
 		var last_check = localStorage['KYBERIA_V31_USERSCRIPT_LAST_VERSION_CHECK'];
 		if (!last_check) return true;
 
-		var aDay = 24*60*60*1000;
+		var aDay = 24*60*60;
 		return ago(last_check) > aDay;
 	}
 	function checkForUpdate() {

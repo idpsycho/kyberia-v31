@@ -4,7 +4,8 @@ function LimitNodeHeight()
 	this.name = 'LimitNodeHeight';
 	var arrNodes;
 	var checkFor30secs = 30;	// nodes keep loading, so their size also changes..
-	this.onLoad = function() {
+	this.onLoad = function()
+	{
 		arrNodes = nodes();
 		checkForLongNodes();
 	}
@@ -21,7 +22,7 @@ function LimitNodeHeight()
 	{
 		var t=$(this);
 		var h = t.height();
-		if (h < 1000) return;
+		if (h < 1400) return;
 
 		if (t.data('islong')) return;
 		if (t.find('textarea').length) return;
@@ -34,20 +35,29 @@ function LimitNodeHeight()
 			t = div;
 
 		}
-		t.height(600);
-		t.css('position', 'relative');
-		var nMore = (h/600).toFixed(0)*1;
-		var expand = $('<div>').html('show '+(nMore>1?nMore+'x':'')+' more');
 
-		t.append(expand);
-		t.css('overflow', 'hidden');
+		t.height(700);
 
-		expand.css({ position:'absolute', bottom:0, left:0, right: 0, 'text-align':'center',
-						'line-height':'40px', cursor:'pointer', background:'#555', color:'#fff' });
-		expand.click(function() {
-			expand.hide();
-			t.css('height', 'auto');
-		});
+		if (0 && 'UGLY SCROLLBAR')
+		{
+			t.css('overflow-y', 'scroll');
+		}
+		if ('SHOW MORE BUTTON')
+		{
+			var nMore = (h/1000).toFixed(0)*1;
+			var expand = $('<div class="kyberia-v31-show-more-button">').html('show '+(nMore>1?nMore+'x':'')+' more');
+
+			expand.css({ position:'absolute', bottom:0, left:0, right: 0, 'text-align':'center',
+							'line-height':'40px', cursor:'pointer', background:'#6dae42', color:'#fff',
+							'box-shadow': '0 0 10px #000',
+			});
+			expand.click(function() {
+				expand.hide();
+				t.css('height', 'auto');
+			});
+
+			t.append(expand).css({ position:'relative', overflow: 'hidden' });
+		}
 	}
 	////////////////////////////////////////////////////////////
 

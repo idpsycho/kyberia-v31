@@ -15,6 +15,8 @@ var g_defaultFeatures = {
 	'QuickReply': 1,
 	'ShowKGivers': 1,
 	'FeatureMix': 1,
+	//'ChatBox': 1,	// tmp for debug..
+	//'Jargoniser': 1,
 };
 
 var g_defaultFeatureValues = {
@@ -24,6 +26,41 @@ var g_defaultFeatureValues = {
 RegExp.escape= function(s) {
 	return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
 };
+
+
+function getWindowUid()
+{
+	var GUID = function () {
+	    var S4 = function () {
+	        return(
+	                Math.floor(
+	                        Math.random() * 0x10000 /* 65536 */
+	                    ).toString(16)
+	            );
+	    };
+	    return (
+	            S4() + S4() + "-" +
+	            S4() + "-" +
+	            S4() + "-" +
+	            S4() + "-" +
+	            S4() + S4() + S4()
+	        );
+	};
+
+	if (!window.name.match(/^GUID-/)) {
+	    window.name = "GUID-" + GUID();
+	}
+	return window.name;
+}
+
+
+function avatarSrc(id)
+{
+	if (!id) return 'http://kyberia.sk/images/nodes///.gif';
+	var id = ''+id;
+	return 'http://kyberia.sk/images/nodes/'+id[0]+'/'+id[1]+'/'+id+'.gif'
+}
+
 
 function isfeatureAvailable(name)
 {
@@ -233,18 +270,19 @@ function getBrowserInfo()	// http://www.javascripter.net/faq/browsern.htm
 
 
 
-function time()	// miliseconds
+function time()	// php-like seconds
 {
-	return new Date().getTime();
+	return (new Date().getTime())/1000;
 }
 function ago(t)
 {
+	if (isNaN(t)) return time();
 	return time() - t;
 }
 
 
 ////////////////////////////////////////////////////////
-function alphabetConversionAllHtml(map, bRemoveDiacriticsAndY)
+function alphabetConversionAllHtml(map, bRemoveDiacritics, bReplaceY, bWordsOnly)
 {
 	var arrFrom = [];
 	for (var k in map)
@@ -252,7 +290,13 @@ function alphabetConversionAllHtml(map, bRemoveDiacriticsAndY)
 
 	arrFrom.sort(function(a, b) { return b.length - a.length; });
 
-	var fromRE = new RegExp('(?:'+arrFrom.join('|')+')', 'g');
+	var reMatch;
+	if (bWordsOnly)
+		reMatch = '(?:\\b'+arrFrom.join('\\b|\\b')+'\\b)';
+	else
+		reMatch = '(?:'+arrFrom.join('|')+')';
+
+	var fromRE = new RegExp(reMatch, 'g');
 
 	var arr = $('body');//:not(textarea,input):visible');
 	for (var ni=0; ni < arr.length; ni++)
@@ -265,15 +309,19 @@ function alphabetConversionAllHtml(map, bRemoveDiacriticsAndY)
 			var TEXT_NODE = textNodes[i];
 			var bef = TEXT_NODE.textContent
 			var aft = bef;
-			if (bRemoveDiacriticsAndY)
-				aft = removeDiacritics(aft).replace(/y/gi, 'i');
+			if (bRemoveDiacritics)
+				aft = removeDiacritics(aft);
+			if (bReplaceY)
+				aft = aft.replace(/y/gi, 'i');
 
+			var bAnyChanges = false;
 			var lastPos = 0;
 			var title = '';
 			aft = aft.toLowerCase();
 			aft = aft.replace(fromRE, function (m, pos)
 			{
 				if (!map[m]) return m;
+				bAnyChanges = 1;
 
 				title += aft.substr(lastPos, pos-lastPos)+'\n';
 				lastPos = pos+m.length;
@@ -282,6 +330,8 @@ function alphabetConversionAllHtml(map, bRemoveDiacriticsAndY)
 			});
 			title += aft.substr(lastPos);
 			aft = aft.copyCasingFrom(bef);
+			if (!bAnyChanges)
+				aft = bef;
 
 			TEXT_NODE.textContent = aft;
 			var childless = $(TEXT_NODE.parentNode).filter(function(){ return !$(this).children().length; });
@@ -418,4 +468,13 @@ String.prototype.copyCasingFrom = function(s)
 			this[i] = this[i].toUpperCase();
 	}
 	return this;
+}
+$.fn.filterByData = function(prop, val) {
+    return this.filter(
+        function() { return $(this).data(prop)==val; }
+    );
+}
+$.addStyle = function(style)
+{
+	$('<style>').html(style).appendTo('head');
 }

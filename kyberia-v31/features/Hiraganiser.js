@@ -90,7 +90,7 @@ function Hiraganiser()
 			map = mapSubset;
 		}
 
-		alphabetConversionAllHtml(map, 'remove diacritics and y');
+		alphabetConversionAllHtml(map, 'remove diacritics', 'replace y');
 	}
 }
 

@@ -8,6 +8,10 @@ function FeatureMix()
 		if (localStorage['v31_amie_mirrorize'])
 			mirrorize();
 
+		// prevent annoying bug in panel.js, that fucks up error-reporting functionality
+		$('<div id="sidebar_node">').append('<a href="#">').appendTo('body');
+		document.captureEvents = function() {};
+
 		fix_imgur();
 
 		custom_pagination_offset();
@@ -17,6 +21,8 @@ function FeatureMix()
 		remember_login_type();
 
 		remove_autoplay();
+
+		people_custom_sorting();
 	}
 	////////////////////////////////////////////////////////////
 
@@ -69,6 +75,53 @@ function FeatureMix()
 		var login_type = localStorage['KYBERIA_V31_last-login-type'];
 		if (login_type=='login_type_id' || login_type=='login_type_name')
 			$('#'+login_type).prop('checked', true);
+	}
+
+	function people_custom_sorting()
+	{
+		$('.v31-sortable').show();
+
+		$.fn.sortChildrenBy = function(fnSort)
+		{
+			this.each(function() {
+				var kids = $(this).find('>*');
+				kids.sort(fnSort);
+				$(this).html(kids);
+			});
+		}
+
+		function sortByIdle()
+		{
+			localStorage['people-sort-by-idle'] = 'yep';
+			$('.user-list').sortChildrenBy(function(a,b) {
+				a = parseInt($(a).data('idle'));
+				b = parseInt($(b).data('idle'));
+				return a-b;
+			});
+		}
+		function sortByName()
+		{
+			localStorage['people-sort-by-idle'] = '';
+			$('.user-list').sortChildrenBy(function(a,b) {
+				a = $(a).text();
+				b = $(b).text();
+				return a<b ? -1 : (a>b ? 1 : 0);
+			});
+		}
+
+		$(function() {
+			if (localStorage['people-sort-by-idle'])
+				sortByIdle();
+
+			$('.v31-sortable .sort-by-name').click(function() {
+				sortByName();
+				return false;
+			});
+			$('.v31-sortable .sort-by-idle').click(function() {
+				sortByIdle();
+				return false;
+			});
+		});
 	}
 }
 

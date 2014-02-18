@@ -22,7 +22,7 @@ function FlashUnloader()
 			var title = $('<div>').text('load youtube').appendTo(div);
 			title.css({ position: 'absolute', padding: '10px 20px', top: '5px', left: '5px',
 							background: 'rgba(123, 123, 123, 0.3)', color: 'white', cursor: 'pointer' });
-			img.css({ cursor: 'pointer', width: w+'px', height: h+'px' });
+			img.css({ cursor: 'pointer', width: w+'px', height: h+'px', 'max-width': '100%' });
 
 			var html = t.outerHTML();
 			t.after(div).remove();

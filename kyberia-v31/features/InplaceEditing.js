@@ -59,6 +59,7 @@ function InplaceEditing()
 		body.data('orig-padding', body.css('padding'));
 		body.css('padding', '0');
 
+		body.find('.kyberia-v31-show-more-button').remove();
 		body.data('orig-html', body.html());
 		var html = body.html().replace(/<br>\n/g, '\n');
 		ta.val( $.trim(html) );
