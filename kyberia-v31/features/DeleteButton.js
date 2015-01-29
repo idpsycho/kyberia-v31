@@ -25,7 +25,8 @@ function DeleteButton()
 			}
 
 
-			var data = {new_parent:123456, 'event':'set_parent', 'node_chosen':arrIds};
+            var anticsrf = $('input[name="anticsrf"]').attr('value');
+			var data = {new_parent:123456, 'event':'set_parent', 'node_chosen':arrIds, 'anticsrf': anticsrf};
 			$.post(actionOf(btn), data, function()
 			{
 				if (nodes.length) {

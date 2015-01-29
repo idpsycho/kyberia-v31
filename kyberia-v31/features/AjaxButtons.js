@@ -53,9 +53,10 @@ function AjaxButtons()
 	function ajaxifyButtons()
 	{
 		Ks().on('click', function() {
+            var anticsrf = $('input[name="anticsrf"]').attr('value');
 			var btn = $(this);
 			var action = actionOf(btn);
-			var data = {event: 'K'};
+			var data = {event: 'K', 'anticsrf': anticsrf};
 			var node_chosen = nodeChosenOf(btn);
 			if (node_chosen)
 				data.node_chosen = node_chosen;
@@ -70,10 +71,11 @@ function AjaxButtons()
 		});
 
 		fooks().add(unfooks()).on('click', function() {
+            var anticsrf = $('input[name="anticsrf"]').attr('value');
 			var btn = $(this);
 			var val = btn.val();
 			var newVal = val=='fook'?'unfook':'fook';
-			$.post(actionOf(btn), {'event':val}, function() {
+			$.post(actionOf(btn), {'event':val, 'anticsrf': anticsrf}, function() {
 				btn.val( newVal );
 				var fooked = btn.parents('table.bordered').eq(0);
 				if (fooked && val=='fook')
@@ -83,11 +85,12 @@ function AjaxButtons()
 		});
 
 		books().add(unbooks()).on('click', function() {
+            var anticsrf = $('input[name="anticsrf"]').attr('value');
 			var btn = $(this);
 			var val = btn.val();
 			var cat = btn.parents('form:eq(0)').find('[name=bookcat_id]').val();
 			var newVal = val=='book'?'unbook':'book';
-			$.post(actionOf(btn), {event:val, bookcat_id:cat}, function() {
+			$.post(actionOf(btn), {event:val, bookcat_id:cat, 'anticsrf': anticsrf}, function() {
 				btn.val( newVal );
 			});
 			return false;

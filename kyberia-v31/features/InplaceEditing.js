@@ -78,7 +78,8 @@ function InplaceEditing()
 	{
 		var ta = body.find('textarea');
 		var html = ta.val();
-		$.post(link, {event: 'configure_content', node_content: html}, function(resp) {
+        var anticsrf = $('input[name="anticsrf"]').attr('value');
+		$.post(link, {event: 'configure_content', node_content: html, 'anticsrf': anticsrf}, function(resp) {
 			ta.remove();
 			var html = $(resp).find('#topic').html();
 			body.html(html);

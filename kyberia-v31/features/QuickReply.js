@@ -76,8 +76,9 @@ function QuickReply()
 	{
 		if (ta.data('sending')) return;
 		ta.data('sending', 'yep');
+        var anticsrf = $('input[name="anticsrf"]').attr('value');
 
-		var data = {node_content: ta.val(), node_parent: id, template_id: 4, event: 'add'};
+		var data = {node_content: ta.val(), node_parent: id, template_id: 4, event: 'add', 'anticsrf': anticsrf};
 		ta.prop('disabled', true);
 		$.post('/id/'+id, data, function(resp) {
 			var html = ta.val();

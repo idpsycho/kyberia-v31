@@ -454,7 +454,8 @@ function ChatBox()
 		}
 		MailReader.sendMail = function(username, content, fnSuccess, fnFail)
 		{
-			var data = {mail_to:username, mail_to_type:'name', mail_text:content, event:'send'};
+            var anticsrf = $('input[name="anticsrf"]').attr('value');
+			var data = {mail_to:username, mail_to_type:'name', mail_text:content, event:'send', 'anticsrf': anticsrf};
 			$.post('/id/24', data)
 			.success(function(html) {
 				_parseMails(html);
