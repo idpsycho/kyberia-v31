@@ -33,7 +33,7 @@ function onReady()
 
 	// not necessary, but very useful for debugging.. breaks stuff in firefox, so just chrome..
 	if (window.chrome)
-		$('<script src="http://code.jquery.com/jquery-2.0.3.min.js">').appendTo('body');
+		$('<script src="//code.jquery.com/jquery-2.0.3.min.js">').appendTo('body');
 }
 
 function analyticsOnceADay()

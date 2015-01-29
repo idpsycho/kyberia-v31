@@ -103,8 +103,8 @@ function FeatureMix()
 		{
 			localStorage['people-sort-by-idle'] = '';
 			$('.user-list').sortChildrenBy(function(a,b) {
-				a = $(a).text();
-				b = $(b).text();
+				a = $(a).text().toLowerCase();
+				b = $(b).text().toLowerCase();
 				return a<b ? -1 : (a>b ? 1 : 0);
 			});
 		}
